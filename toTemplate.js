@@ -51,6 +51,7 @@ const transform = findAndReplaceAll;
 const archivePath = 'archive.tar.gz';
 const dest = 'export';
 
+fs.moveSync(dest + '/.git', '.git.tmp');
 fs.removeSync(archivePath);
 fs.emptyDirSync(dest);
 const result = execSync(`git archive master -o ${archivePath}`);
@@ -60,44 +61,53 @@ const result = execSync(`git archive master -o ${archivePath}`);
 const contents = {};
 
 console.log('extracting...', {archivePath, dest});
-tar.x({
-    cwd: dest,
-    file : archivePath,
-    sync: true,
-    onentry(entry) {
-        entry.path = transform(entry.path);
-        return entry;
-    },
-    transform(entry) {
-        // console.log(entry.path);
-        // console.log(entry.bufferLength);
-        let counter = 0;
-        contents[entry.path] = "";
-        return entry.pipe(new Transform({
-            transform(chunk, enc, cb) {
-                counter ++;
-                if (counter % 2 == 0) { // WEIRD the function seems to be called 2 per chunk, so we do only once per twice
-                    return cb();
+try {
+    tar.x({
+        cwd: dest,
+        file : archivePath,
+        sync: true,
+        onentry(entry) {
+            entry.path = transform(entry.path);
+            return entry;
+        },
+        filter(path) {
+            return path !== '.gitmodules' && path !== 'export' && path !== 'archive.tar.gz';
+        }, 
+        transform(entry) {
+            // console.log(entry.path);
+            // console.log(entry.bufferLength);
+            let counter = 0;
+            contents[entry.path] = "";
+            return entry.pipe(new Transform({
+                transform(chunk, enc, cb) {
+                    counter ++;
+                    if (counter % 2 == 0) { // WEIRD the function seems to be called 2 per chunk, so we do only once per twice
+                        return cb();
+                    }
+                    // if (entry.path === 'contracts/package.json') {
+                    //     console.log('CHUNK', chunk.toString());
+                    // }
+                    contents[entry.path] += chunk;
+                    // TODO streaming seatch and replace 
+                    // var upperChunk = chunk.toString().toUpperCase();
+                    // this.push(upperChunk);
+                    cb();
+                },
+                flush(cb) {
+                    const content = contents[entry.path];
+                    // if (entry.path === 'contracts/package.json') {
+                    //     console.log(content);
+                    // }
+                    // console.log('flushing ' + entry.path);
+                    this.push(transform(content));
+                    delete contents[entry.path];
+                    cb();
                 }
-                // if (entry.path === 'contracts/package.json') {
-                //     console.log('CHUNK', chunk.toString());
-                // }
-                contents[entry.path] += chunk;
-                // TODO streaming seatch and replace 
-                // var upperChunk = chunk.toString().toUpperCase();
-                // this.push(upperChunk);
-                cb();
-            },
-            flush(cb) {
-                const content = contents[entry.path];
-                // if (entry.path === 'contracts/package.json') {
-                //     console.log(content);
-                // }
-                // console.log('flushing ' + entry.path);
-                this.push(transform(content));
-                delete contents[entry.path];
-                cb();
-            }
-        }));
-    }
-});
+            }));
+        }
+    });    
+} finally {
+    fs.moveSync('.git.tmp', dest + '/.git');
+    fs.removeSync(archivePath);
+}
+
