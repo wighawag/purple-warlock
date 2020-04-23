@@ -40,6 +40,7 @@ function findAndReplaceVariable(str, test, variableName) {
 }
 
 function findAndReplaceAll(str) {
+    str = findAndReplace(str, '}}', '{{!"}"}}}');
     for (const variableName of Object.keys(variables)) {
         for (const test of tests) {
             str = findAndReplaceVariable(str, test, variableName);
@@ -77,14 +78,20 @@ try {
         transform(entry) {
             // console.log(entry.path);
             // console.log(entry.bufferLength);
+            let chunks = {};
             let counter = 0;
             contents[entry.path] = "";
             return entry.pipe(new Transform({
                 transform(chunk, enc, cb) {
-                    counter ++;
-                    if (counter % 2 == 0) { // WEIRD the function seems to be called 2 per chunk, so we do only once per twice
+                    const str = chunk.toString();
+                    if (chunks[str]) {
                         return cb();
                     }
+                    chunks[str] = true; // WEIRD the function seems to be called 2 per chunk, checkin g duplicate chunk (NOT FULL PROOF)
+                    counter ++;
+                    // if (counter % 2 == 0) { // WEIRD the function seems to be called 2 per chunk, so we do only once per twice
+                    //     return cb();
+                    // }
                     // if (entry.path === 'contracts/package.json') {
                     //     console.log('CHUNK', chunk.toString());
                     // }
