@@ -1,0 +1,25 @@
+specVersion: 0.0.2
+description: Purple Warlock
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: GobelinRegistry
+    network: mainnet
+    source:
+      address: '{{contracts.GobelinRegistry.address}}'
+      abi: GobelinRegistryContract
+      # startBlock: TODO
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      entities:
+        - Planet
+      abis:
+        - name: GobelinRegistryContract
+          file: ./abis/GobelinRegistry.json
+      eventHandlers:
+        - event: NameChanged(indexed address,string)
+          handler: handleNameChanged
+      file: ./src/mapping.ts
