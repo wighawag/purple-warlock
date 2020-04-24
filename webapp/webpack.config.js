@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const config = require('sapper/config/webpack.js');
 const pkg = require('./package.json');
+const dotEnv = require('dotenv-webpack');
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
@@ -38,6 +39,9 @@ module.exports = {
 		},
 		mode,
 		plugins: [
+			new dotEnv({
+				path: `./.env.${process.env.NODE_ENV}`
+			}),
 			// pending https://github.com/sveltejs/svelte/issues/2377
 			// dev && new webpack.HotModuleReplacementPlugin(),
 			new webpack.DefinePlugin({
@@ -70,6 +74,11 @@ module.exports = {
 			]
 		},
 		mode: process.env.NODE_ENV,
+		plugins: [
+			new dotEnv({
+				path: `./.env.${process.env.NODE_ENV}`
+			}),
+		],
 		performance: {
 			hints: false // it doesn't matter if server.js is large
 		}

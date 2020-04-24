@@ -10,6 +10,8 @@ module.exports = async ({getNamedAccounts, deployments}) => {
   );
   if (gobelinRegistryDeployResult.newlyDeployed) {
     const gobelinRegistryContract = gobelinRegistryDeployResult.contract;
-    log(`GobelinRegistrydeployed at ${gobelinRegistryContract.address} for ${gobelinRegistryDeployResult.receipt.gasUsed} gas`);
+    log(
+      `GobelinRegistrydeployed at ${gobelinRegistryContract.address} for ${gobelinRegistryDeployResult.receipt.gasUsed} gas`
+    );
   }
 };
