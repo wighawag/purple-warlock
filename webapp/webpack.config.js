@@ -7,6 +7,11 @@ const dotEnv = require('dotenv-webpack');
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 
+let envPath = '.env';
+if (mode) {
+	envPath = `./.env.${mode}`;
+}
+
 const alias = { svelte: path.resolve('node_modules', 'svelte') };
 const extensions = ['.mjs', '.js', '.json', '.svelte', '.html'];
 const mainFields = ['svelte', 'module', 'browser', 'main'];
@@ -40,7 +45,7 @@ module.exports = {
 		mode,
 		plugins: [
 			new dotEnv({
-				path: `./.env.${process.env.NODE_ENV}`
+				path: envPath
 			}),
 			// pending https://github.com/sveltejs/svelte/issues/2377
 			// dev && new webpack.HotModuleReplacementPlugin(),
@@ -76,7 +81,7 @@ module.exports = {
 		mode: process.env.NODE_ENV,
 		plugins: [
 			new dotEnv({
-				path: `./.env.${process.env.NODE_ENV}`
+				path: envPath
 			}),
 		],
 		performance: {
