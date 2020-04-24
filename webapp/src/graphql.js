@@ -46,7 +46,7 @@ const createApolloClient = () => {
     }
   };
 
-  return new ApolloClient({ssrMode: true, link, cache: new InMemoryCache(), defaultOptions});
+  return new ApolloClient({ssrMode: false, link, cache: new InMemoryCache(), defaultOptions});
 }
 
 export const client = createApolloClient(); 

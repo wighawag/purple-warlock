@@ -15,26 +15,21 @@ function _set(data) {
     set($data);
 }
 
-let dataStore;
-export default dataStore = {
-  subscribe,
-  preload: async () => {
-    try {
-        const data = await client.query({
-            query: NAMES
-        });
-        return {data: data.data};
-    } catch (e) {
-        console.error(e);
+async function listen() {
+    if (!process.browser) {
+        return;
     }
-    return {data: null};
-  },
-  restore: (data) => {
-    client.writeQuery({query: NAMES, data});
-    // const restoredData = client.readQuery({query: NAMES});
-    _set({status: 'loaded', data: data.namedEntities.map(item => item.name)})
-  },
-  load: async () => {
+    if ($data.listenning) {
+        return;
+    }
+    _set({listenning: true});
+
+    if ($data.status !== 'loaded') {
+        _set({status: 'loading'});
+    }
+    
+    // TODO handle error
+    
     let sub = await client.subscribe({
         query: NAMES_SUBSCRIPTION
     }); 
@@ -42,20 +37,42 @@ export default dataStore = {
     //     query: NAMES,
     //     pollInterval : 1000
     // }); 
+    
     sub.subscribe(
         {
-            next: (obj) => _set({status: 'loaded', data: obj.data.namedEntities.map(item => item.name)}),
+            next: (result) => _set({status: 'loaded', data: result.data.namedEntities.map(item => item.name)}),
             error: (...args) => console.log('error', ...args),
             complete: (...args) => console.log('complete', ...args),
         }
-    )
-  }
+    );
+}
+
+let dataStore;
+export default dataStore = {
+  subscribe,
+  load: async () => {
+    if ($data.status !== 'loaded') {
+        _set({status: 'loading'});
+    }
+    const result = await client.query({
+        query: NAMES,
+        fetchPolicy: process.browser? undefined : 'network-only'
+    });
+    console.log({result: JSON.stringify(result, null, '  ')});
+    _set({status: 'loaded', data: result.data.namedEntities.map(item => item.name)})
+    return {data: result.data};
+  },
+  boot: (data) => {
+    if (data) {
+        client.writeQuery({query: NAMES, data});
+        _set({status: 'loaded', data: data.namedEntities.map(item => item.name)})
+    }
+    listen();
+  },
+  listen
 };
 
 if (typeof window !== 'undefined') {
     window.names = $data;
-}
-if (process.browser) {
-    dataStore.load();
 }
 
