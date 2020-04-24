@@ -18,18 +18,17 @@ function _set(data) {
 let dataStore;
 export default dataStore = {
   subscribe,
-//   preload: async function preload() {
-//     try {
-//         const data = await client.query({
-//             query: NAMES
-//         });
-//         console.log({data});
-//         return {data: data.data};
-//     } catch (e) {
-//         console.error(e);
-//     }
-//     return {data: null};
-//   },
+  preload: async () => {
+    try {
+        const data = await client.query({
+            query: NAMES
+        });
+        return {data: data.data};
+    } catch (e) {
+        console.error(e);
+    }
+    return {data: null};
+  },
   restore: (data) => {
     client.writeQuery({query: NAMES, data});
     // const restoredData = client.readQuery({query: NAMES});

@@ -1,24 +1,16 @@
 <!-- ---------- SERVER SIDE RENDERRING ----------- -->
 <script context="module">
-import {client, NAMES} from '../graphql';
+import names from '../stores/names';
 export async function preload() {
-    try {
-        const data = await client.query({
-            query: NAMES
-        });
-        console.log({data});
-        return {data: data.data};
-    } catch (e) {
-        console.error(e);
-    }
-    return {data: null};
+    return names.preload();
 }
 </script>
 
 <script>
 export let data;
-import names from '../stores/names';
 names.restore(data);
+//// ---------- SERVER SIDE RENDERRING ----------- ///
+
 </script>
 
 {#if !$names.status}
