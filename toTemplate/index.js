@@ -73,7 +73,8 @@ try {
             return entry;
         },
         filter(path) {
-            return path !== '.gitmodules' && path !== 'export' && path !== 'archive.tar.gz' && path !== 'toTemplate.js';
+            console.log(path);
+            return path !== '.gitmodules' && !path.startsWith('export/') && path !== 'archive.tar.gz' && !path.startsWith('toTemplate/');
         }, 
         transform(entry) {
             // console.log(entry.path);
