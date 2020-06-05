@@ -1,5 +1,5 @@
 const {execSync} = require('child_process');
-execSync('npm install --no-save change-case@4.1.1 fs-extra@9.0.0 tar@5.0.1')
+// execSync('npm install --no-save change-case@4.1.1 fs-extra@9.0.0 tar@5.0.1')
 
 const {Transform } = require('stream');
 const tar = require('tar');
