@@ -1,6 +1,6 @@
-import {pipe, fromValue, concat, scan, map, subscribe} from "wonka";
-import client from "./client";
-import {initialState} from "./constants";
+import {pipe, fromValue, concat, scan, map, subscribe} from 'wonka';
+import client from './client';
+import {initialState} from './constants';
 
 export const query = (args) => {
   const queryResult$ = pipe(

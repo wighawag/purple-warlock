@@ -24,13 +24,14 @@ function transform(result) {
   if (result.data) {
     // console.log({data: result.data});
     _set({status: 'Ready'});
-    if (result.data.names) {
-      _set({data: result.data.names});
+    if (result.data.namedEntities) {
+      _set({data: result.data.namedEntities});
     } else {
       _set({data: {}});
     }
   }
-  if (result.extensions) { // TODO ?
+  if (result.extensions) {
+    // TODO ?
     console.log({extensions: result.extensions});
   }
 }

@@ -1,13 +1,11 @@
 pragma solidity 0.6.5;
 
-
 contract GobelinRegistry {
     event NameChanged(address indexed user, string name);
 
     function setName(string calldata name) external {
         _names[msg.sender] = name;
         emit NameChanged(msg.sender, name);
-        
     }
 
     // ////////////////// CONSTRUCTOR /////////////////////////////

@@ -1,9 +1,9 @@
-const {getNamedAccounts, ethers, deployments} = require("@nomiclabs/buidler");
+const {getNamedAccounts, ethers} = require("@nomiclabs/buidler");
 
 async function main() {
-  const {deployer, users} = await getNamedAccounts();
+  const {others} = await getNamedAccounts();
   for (let i = 0; i < 4; i++) {
-    const gobelinRegistryContract = await ethers.getContract("GobelinRegistry", users[i]);
+    const gobelinRegistryContract = await ethers.getContract("GobelinRegistry", others[i]);
     await gobelinRegistryContract.setName("" + Math.floor(Date.now() / 1000));
   }
 }
