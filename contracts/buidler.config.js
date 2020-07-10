@@ -58,6 +58,6 @@ module.exports = {
   },
   namedAccounts: {
     deployer: 0,
-    users: "from:3",
+    others: "from:3",
   },
 };

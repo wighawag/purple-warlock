@@ -7,6 +7,7 @@ contract GobelinRegistry {
     function setName(string calldata name) external {
         _names[msg.sender] = name;
         emit NameChanged(msg.sender, name);
+        
     }
 
     // ////////////////// CONSTRUCTOR /////////////////////////////

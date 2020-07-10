@@ -9,13 +9,13 @@ dataSources:
     source:
       address: '{{contracts.GobelinRegistry.address}}'
       abi: GobelinRegistryContract
-      # startBlock: TODO
+      startBlock: {{contracts.GobelinRegistry.receipt.blockNumber}}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
       language: wasm/assemblyscript
       entities:
-        - Planet
+        - NamedEntity
       abis:
         - name: GobelinRegistryContract
           file: ./abis/GobelinRegistry.json

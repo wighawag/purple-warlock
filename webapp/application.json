@@ -1,0 +1,15 @@
+{
+  "appName": "Purple Warlock",
+  "appShortName": "Purple Warlock",
+  "appDescription": "Purple Warlock Decentralised Application Based On A Template",
+  "appShortDescription": "Purple Warlock Decentralised Application",
+  "developerName": "Nobody",
+  "developerURL": "https://purple-warlock.eth.link",
+  "url": "https://purple-warlock.eth.link",
+  "background": "#1f253a",
+  "theme_color": "#1f253a",
+  "appleStatusBarStyle": "black-translucent",
+  "display": "fullscreen",
+  "icon": "icon.svg",
+  "preview": "preview.png"
+}

@@ -1,4 +1,4 @@
-const {assert, should, expect} = require("local-chai");
+const {assert, should, expect} = require("chai-setup");
 const {ethers, getNamedAccounts, deployments} = require("@nomiclabs/buidler");
 
 describe("GobelinRegistry", function () {
