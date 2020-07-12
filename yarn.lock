@@ -15711,10 +15711,10 @@ web3w-walletconnect@0.0.1:
   resolved "https://registry.yarnpkg.com/web3w-walletconnect/-/web3w-walletconnect-0.0.1.tgz#92f7033376cb4148995e216fe193568b19ed9e3b"
   integrity sha512-UVyFas8mzl5k1MbbTex8MTbCNpnaVbpzsyxxrOl9M5SklTRpIr+lD3m68x58cyZNhBdI/lQ3L/Rg5UUV1BupOg==
 
-web3w@0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/web3w/-/web3w-0.1.0.tgz#3188562a91ed5282eda854a6c53776730e498ea8"
-  integrity sha512-rOVULkLVPpo7rXEk/HE3IEfc5cD8XErRcIOw1PomkD/t6hqOOTD/q6sz3r6GJ90parabi+LLxwByITcAmiZBpw==
+web3w@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/web3w/-/web3w-0.1.1.tgz#8acb62b3f89a90de65b3d01b6ea15696606beb61"
+  integrity sha512-pt8RGVEKLjSJiLeL7odoWEz5bIcQl40nR1Z1SdUMygkJfohE7v5VTCN0BPDhB/JP+Vjh33t+q0/UAEZ6sd5urw==
 
 webpack-sources@^1.4.0, webpack-sources@^1.4.1:
   version "1.4.3"
