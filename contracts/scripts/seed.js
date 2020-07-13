@@ -1,10 +1,22 @@
 const {getNamedAccounts, ethers} = require("@nomiclabs/buidler");
 
+const names = [
+  "Hetrorlig Oakenbrow",
+  "Dermerlug Brewcloak",
+  "Nalol Blackbraids",
+  "Webir Goldenback",
+  "Dholdrec Chaosgrip",
+  "Siggog Strongjaw",
+  "Krostol Snowtank",
+  "Rumit Dragonarmour",
+  "Nemnad Thunderbrow",
+  "Gagham Grimbelly",
+];
 async function main() {
   const {others} = await getNamedAccounts();
   for (let i = 0; i < 4; i++) {
     const gobelinRegistryContract = await ethers.getContract("GobelinRegistry", others[i]);
-    await gobelinRegistryContract.setName("" + Math.floor(Date.now() / 1000));
+    await gobelinRegistryContract.setName(names[i]);
   }
 }
 
