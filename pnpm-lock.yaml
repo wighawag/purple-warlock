@@ -834,7 +834,7 @@ packages:
       '@hapi/hoek': 9.0.4
       '@hapi/pinpoint': 2.0.0
       '@hapi/topo': 5.0.0
-    deprecated: "joi is leaving the @hapi organization and moving back to 'joi' (https://github.com/sideway/joi/issues/2411)"
+    deprecated: 'joi is leaving the @hapi organization and moving back to ''joi'' (https://github.com/sideway/joi/issues/2411)'
     dev: true
     resolution:
       integrity: sha512-p4DKeZAoeZW4g3u7ZeRo+vCDuSDgSvtsB/NpfjXEHTUjSeINAi/RrVOWiVQ1isaoLzMvFEhe8n5065mQq1AdQg==
@@ -1611,7 +1611,7 @@ packages:
   /@types/bignumber.js/5.0.0:
     dependencies:
       bignumber.js: 9.0.0
-    deprecated: "This is a stub types definition for bignumber.js (https://github.com/MikeMcl/bignumber.js/). bignumber.js provides its own type definitions, so you don't need @types/bignumber.js installed!"
+    deprecated: 'This is a stub types definition for bignumber.js (https://github.com/MikeMcl/bignumber.js/). bignumber.js provides its own type definitions, so you don''t need @types/bignumber.js installed!'
     dev: true
     optional: true
     resolution:
@@ -9863,7 +9863,7 @@ packages:
   /mkdirp-promise/5.0.1:
     dependencies:
       mkdirp: 1.0.4
-    deprecated: "This package is broken and no longer maintained. 'mkdirp' itself supports promises now, please switch to that."
+    deprecated: 'This package is broken and no longer maintained. ''mkdirp'' itself supports promises now, please switch to that.'
     dev: true
     engines:
       node: '>=4'
