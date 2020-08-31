@@ -1,0 +1,7 @@
+[build.environment]
+    NPM_FLAGS="--prefix=/dev/null"
+
+[build]
+  base = "web/"
+  publish = "dist/"
+  command = "npm link ../common-lib && npm run build"
