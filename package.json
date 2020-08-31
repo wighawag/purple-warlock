@@ -20,7 +20,6 @@
     "wighawag_newsh": "^0.0.5"
   },
   "scripts": {
-    "prebuild": "test \"$CI\" = true && npx pnpm install -r --store=node_modules/.pnpm-store || echo skiping pnpm install",
     "postinstall": "node ./.setup.js && node fix_ethers_modules.js",
     "preinstall": "npx only-allow pnpm",
 
