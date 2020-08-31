@@ -1,31 +1,32 @@
-const { execSync } = require("child_process");
+/* eslint-disable @typescript-eslint/no-var-requires */
+const {execSync} = require('child_process');
 // execSync('npm install --no-save change-case@4.1.1 fs-extra@9.0.0 tar@5.0.1')
 
-const { Transform } = require("stream");
-const tar = require("tar");
-const fs = require("fs-extra");
-const changeCase = require("change-case");
+const {Transform} = require('stream');
+const tar = require('tar');
+const fs = require('fs-extra');
+const changeCase = require('change-case');
 
 const args = process.argv.slice(2);
-const branch = args[0] || "master";
+const branch = args[0] || 'master';
 
 const variables = {
-  name: "Purple Warlock",
-  contractName: "Gobelin Registry",
+  name: 'Purple Warlock',
+  contractName: 'Gobelin Registry',
 };
 
 const tests = [
-  "camelCase",
-  "constantCase",
-  "headerCase",
-  "noCase",
-  "paramCase",
-  "pascalCase",
-  "pathCase",
-  "sentenceCase",
-  "snakeCase",
-  "capitalCase",
-  "dotCase",
+  'camelCase',
+  'constantCase',
+  'headerCase',
+  'noCase',
+  'paramCase',
+  'pascalCase',
+  'pathCase',
+  'sentenceCase',
+  'snakeCase',
+  'capitalCase',
+  'dotCase',
 ];
 
 // for (const test of tests) {
@@ -39,15 +40,11 @@ function findAndReplace(str, term, replacement) {
 }
 
 function findAndReplaceVariable(str, test, variableName) {
-  return findAndReplace(
-    str,
-    changeCase[test](variables[variableName]),
-    `{{=_.${test}(it.${variableName})}}`
-  );
+  return findAndReplace(str, changeCase[test](variables[variableName]), `{{=_.${test}(it.${variableName})}}`);
 }
 
 function findAndReplaceAll(str) {
-  str = findAndReplace(str, "}}", '{{!"}"}}}');
+  str = findAndReplace(str, '}}', '{{!"}"}}}');
   for (const variableName of Object.keys(variables)) {
     for (const test of tests) {
       str = findAndReplaceVariable(str, test, variableName);
@@ -58,18 +55,19 @@ function findAndReplaceAll(str) {
 
 const transform = findAndReplaceAll;
 
-const archivePath = "archive.tar.gz";
-const dest = "export";
-fs.moveSync(dest + "/.git", ".git.tmp");
+const archivePath = 'archive.tar.gz';
+const dest = 'export';
+fs.ensureDir(dest);
+const exportGitFolder = dest + '/.git';
+if (fs.existsSync(exportGitFolder)) {
+  fs.moveSync(exportGitFolder, '.git.tmp');
+}
 fs.removeSync(archivePath);
 fs.emptyDirSync(dest);
-const result = execSync(`git archive ${branch} -o ${archivePath}`);
-// console.log({archiveExists: fs.existsSync(archivePath)});
-// console.log({result: result.toString()});
+execSync(`git archive ${branch} -o ${archivePath}`);
 
 const contents = {};
-
-console.log("extracting...", { archivePath, dest });
+console.log('extracting...', {archivePath, dest});
 try {
   tar.x({
     cwd: dest,
@@ -82,10 +80,10 @@ try {
     filter(path) {
       console.log(path);
       return (
-        path !== ".gitmodules" &&
-        !path.startsWith("export/") &&
-        path !== "archive.tar.gz" &&
-        !path.startsWith("toTemplate/")
+        path !== '.gitmodules' &&
+        !path.startsWith('export/') &&
+        path !== 'archive.tar.gz' &&
+        !path.startsWith('toTemplate/')
       );
     },
     transform(entry) {
@@ -93,7 +91,7 @@ try {
       // console.log(entry.bufferLength);
       let chunks = {};
       let counter = 0;
-      contents[entry.path] = "";
+      contents[entry.path] = '';
       return entry.pipe(
         new Transform({
           transform(chunk, enc, cb) {
@@ -130,6 +128,8 @@ try {
     },
   });
 } finally {
-  fs.moveSync(".git.tmp", dest + "/.git");
+  if (fs.existsSync('.git.tmp')) {
+    fs.moveSync('.git.tmp', dest + '/.git');
+  }
   fs.removeSync(archivePath);
 }

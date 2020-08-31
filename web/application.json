@@ -1,0 +1,16 @@
+{
+  "appName": "Purple Warlock",
+  "appShortName": "Purple Warlock",
+  "appDescription": "An app created from a template",
+  "appShortDescription": "An app created from a template",
+  "developerName": "Nobody",
+  "developerURL": "https://purple-warlock.eth.link",
+  "url": "https://purple-warlock.eth.link",
+  "ensName": "purple-warlock.eth",
+  "background": "#1f253a",
+  "theme_color": "#1f253a",
+  "appleStatusBarStyle": "black-translucent",
+  "display": "fullscreen",
+  "icon": "icon.svg",
+  "maskable_icon": "android-chrome-512x512.png"
+}

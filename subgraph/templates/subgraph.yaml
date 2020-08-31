@@ -5,7 +5,7 @@ schema:
 dataSources:
   - kind: ethereum/contract
     name: GobelinRegistry
-    network: mainnet
+    network: {{chainName}}
     source:
       address: '{{contracts.GobelinRegistry.address}}'
       abi: GobelinRegistryContract
