@@ -5,3 +5,5 @@ node_modules/
 purple-warlock.code-workspace
 .vscode/*
 !.vscode/settings.json.default
+package-lock.json
+yarn.lock

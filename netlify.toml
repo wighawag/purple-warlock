@@ -2,6 +2,6 @@
     NPM_FLAGS="--prefix=/dev/null"
 
 [build]
-  base = "web/"
-  publish = "dist/"
-  command = "npm link ../common-lib && npm run build"
+  base = ""
+  publish = "web/dist/"
+  command = "npm run web:build"
