@@ -15,7 +15,6 @@
     "graphql": "^15.3.0",
     "named-logs": "0.0.6",
     "named-logs-console": "0.0.5",
-    "common-lib": "workspace:common-lib",
     "svelte": "3.24.1",
     "svelte-hmr": "0.10.2",
     "web3w": "^0.1.3",
