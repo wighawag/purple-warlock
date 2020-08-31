@@ -4,4 +4,4 @@
 [build]
   base = ""
   publish = "web/dist/"
-  command = "npm run web:build"
+  command = "npx pnpm install --store=node_modules/.pnpm-store && npm run web:build"
