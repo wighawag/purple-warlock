@@ -16,8 +16,6 @@ for (const routePath of routes) {
   });
 }
 
-console.log({routesConfig});
-
 const options: RouterOptions = {};
 
 let base = '';
@@ -29,8 +27,9 @@ if (typeof window.basepath !== 'undefined') {
   }
   const pathSegments = pathname.split('/');
   base = pathSegments.slice(0, pathSegments.length - count).join('/');
-  console.log({base, basepath: window.basepath, pathSegments, count});
-  options.history = {base: createBase(base)};
+  if (base !== '') {
+    options.history = {base: createBase(base)};
+  }
 }
 
 export const router = createRouter(browser, prepareRoutes(routesConfig), options);

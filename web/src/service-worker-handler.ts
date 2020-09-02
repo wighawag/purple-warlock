@@ -10,7 +10,6 @@ function updateLoggingForWorker(worker) {
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
-    // if (process.env.NODE_ENV === 'production') {
     const swLocation = `${typeof window.basepath === 'undefined' ? '/' : window.basepath}sw.js`;
     console.log({swLocation});
     navigator.serviceWorker.register(swLocation).then((registration) => {
@@ -27,19 +26,5 @@ if ('serviceWorker' in navigator) {
         });
       });
     });
-    // TODO ?
-    // } else {
-    //   navigator.serviceWorker
-    //     .getRegistrations()
-    //     .then((registrations) => {
-    //       registrations.forEach((registration) => {
-    //         registration.unregister();
-    //       });
-    //       return registrations.length;
-    //     })
-    //     .then((len) => {
-    //       len > 0 && location.reload();
-    //     });
-    // }
   });
 }
