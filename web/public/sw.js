@@ -1,5 +1,6 @@
 // /!\ Warning /!\
 // Variables auto updated by build:
+const URLS_FIXES = []; // issues with sub folder and favicon / manifest request (proper fix : emit event to service worker to let it know of change of base url ?)
 const URLS_TO_PRE_CACHE = [];
 const CACHE_NAME = 'cache-v1';
 const DEV = true;
@@ -17,9 +18,12 @@ self.addEventListener('message', function (event) {
   }
 });
 
+const href = self.location.href;
 const pathname = self.location.pathname;
+const baseurl = `${href.slice(0, href.length - 5)}`; // assume service worker is named `sw.js`
 const base = pathname.substr(0, pathname.length - 5); // assume service worker is named `sw.js`
 
+const urlFixes = URLS_FIXES;
 const urlsToPreCache = URLS_TO_PRE_CACHE.map((v) => base + v);
 
 // Regexes are sorted by priority
@@ -120,6 +124,16 @@ const onlineOnly = {
 
 self.addEventListener('fetch', (event) => {
   let request = event.request;
+  for (const urlFix of urlFixes) {
+    if (request.url.endsWith(`/${urlFix}`)) {
+      const newUrl = `${baseurl}${urlFix}`;
+      if (newUrl !== request.url) {
+        log('url fix found', {urlFix, newUrl, oldUrl: request.url});
+        request = new Request(newUrl);
+      }
+      break;
+    }
+  }
 
   event.respondWith(
     caches.match(request).then((cache) => {
