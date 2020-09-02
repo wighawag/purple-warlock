@@ -22,10 +22,12 @@
     "wonka": "^4.0.14"
   },
   "devDependencies": {
+    "@tailwindcss/ui": "^0.5.0",
     "@tsconfig/svelte": "^1.0.8",
     "@types/favicons": "^5.5.0",
     "@types/fs-extra": "^9.0.1",
     "@types/node": "^14.6.0",
+    "autoprefixer": "^9.8.6",
     "favicons": "^6.2.0",
     "fs-extra": "^9.0.1",
     "ipfs-deploy": "^8.0.1",
@@ -33,6 +35,7 @@
     "svelte-check": "^1.0.11",
     "svelte-preprocess": "^4.0.10",
     "svite": "^0.6.0",
+    "tailwindcss": "^1.7.6",
     "ts-node": "^9.0.0",
     "tsconfig-paths": "^3.9.0",
     "tslib": "^2.0.0",

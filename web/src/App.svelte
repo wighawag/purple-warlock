@@ -5,7 +5,10 @@
 </script>
 
 <Router>
+  <nav>
+    <Link name="Home">Home</Link>
+    <Link name="Demo">Demo</Link>
+    <Link name="Wallet">Wallet</Link>
+  </nav>
   <CurrentPage />
-  <Link name="Home">Home</Link>
-  <Link name="Wallet">wallet</Link>
 </Router>
