@@ -5,6 +5,9 @@
   let _class = '';
   export {_class as class};
 
+  export let params = {};
+  export let state = null;
+
   export let href = undefined;
   export let blank = false;
   export let type = undefined;
@@ -147,31 +150,34 @@
     `;
 
   let router = getRouter();
-  // TODO
-  // export let params = {};
-  // export let hash = undefined;
-  // export let query = undefined;
-  // export let state = null;
-  $: url = router.url({name: href, params: {}, hash: undefined, query: undefined}); // TODO
-  $: target = $$restProps.target;
+  let canNavigate = (event, target) => {
+    return (
+      !event.defaultPrevented &&
+      !target &&
+      event.button === 0 &&
+      !(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)
+    );
+  };
 
-  let handlePageLink = undefined;
-  if (href && !href.startsWith('http') && !href.startsWith('#')) {
-    let canNavigate = (event, target) => {
-      return (
-        !event.defaultPrevented &&
-        !target &&
-        event.button === 0 &&
-        !(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey)
-      );
-    };
-
-    handlePageLink = (event) => {
-      if (canNavigate(event, target)) {
-        event.preventDefault();
-        router.navigate({url, state: undefined}); // TODO state
-      }
-    };
+  let url;
+  let target;
+  let handlePageLink;
+  $: {
+    if (href && !href.startsWith('http')) {
+      const split1 = href.split('#');
+      const split2 = split1[0].split('?');
+      const page = split2[0];
+      const hash = split1[1];
+      const query = split2[1];
+      url = router.url({name: page, params, hash, query});
+      target = $$restProps.target;
+      handlePageLink = (event) => {
+        if (canNavigate(event, target)) {
+          event.preventDefault();
+          router.navigate({url, state});
+        }
+      };
+    }
   }
 </script>
 
