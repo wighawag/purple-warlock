@@ -105,6 +105,7 @@ importers:
       wait-on: ^4.0.1
   web:
     dependencies:
+      '@curi/interactions': 2.0.2
       '@curi/router': 2.1.1
       '@curi/svelte': 2.0.0-beta.6_@curi+router@2.1.1
       '@ethersproject/bignumber': 5.0.5
@@ -143,6 +144,7 @@ importers:
       tslib: 2.0.1
       typescript: 3.9.7
     specifiers:
+      '@curi/interactions': ^2.0.2
       '@curi/router': ^2.1.1
       '@curi/svelte': ^2.0.0-beta.6
       '@ethersproject/bignumber': ^5.0.5
@@ -177,7 +179,7 @@ importers:
       tsconfig-paths: ^3.9.0
       tslib: ^2.0.0
       typescript: ^3.9.7
-      web3w: ^0.1.3
+      web3w: ^0.2.3
       wonka: ^4.0.14
 lockfileVersion: 5.1
 packages:
@@ -17007,18 +17009,6 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-tpu9fLIComgxGrFsD8LUtA4s4aCZk7px8UfcdEy6kS2uDi/ZfR07KJqpXZMij7Jvlq+cQrTAhsPSiBVvoMaivA==
-  /web3w/0.1.3_2ac4bd5f06e5572a5ae96df0e9b5fb67:
-    dependencies:
-      '@ethersproject/bignumber': 5.0.5
-      '@ethersproject/contracts': 5.0.3
-      '@ethersproject/providers': 5.0.6
-    dev: false
-    peerDependencies:
-      '@ethersproject/bignumber': ^5.0.0-beta.138
-      '@ethersproject/contracts': ^5.0.0-beta.151
-      '@ethersproject/providers': ^5.0.0-beta.164
-    resolution:
-      integrity: sha512-Ux8grqSXoD3udKGhFN42x/IZlX9z622dZzloSPwnZUewxvDSgCXJ9E5mg8jkPRtc/+GS7Wj17BAOCbVzYez2Zw==
   /websocket/1.0.29:
     dependencies:
       debug: 2.6.9

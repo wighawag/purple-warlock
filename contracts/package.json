@@ -30,7 +30,6 @@
     "test": "buidler compile && mocha --bail --recursive test",
     "coverage": "buidler --network coverage coverage",
     "dev": "buidler node --reset --watch --export contractsInfo.json",
-    "lint": "eslint */**/*.{js,ts,tsx} --quiet --fix",
     "compile": "buidler compile",
     "local:dev": "buidler --network localhost deploy --watch",
     "local:deploy": "buidler --network localhost deploy",

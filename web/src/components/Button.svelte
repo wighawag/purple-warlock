@@ -2,28 +2,29 @@
   import {getRouter} from '@curi/svelte';
   import {createEventDispatcher} from 'svelte';
 
-  let _class = '';
+  let _class: string = '';
   export {_class as class};
 
   export let params = {};
-  export let state = null;
+  export let state: any = null;
 
-  export let href = undefined;
-  export let blank = false;
-  export let type = undefined;
-  export let label;
+  export let href: string = undefined;
+  export let blank: boolean = false;
+  export let type: string = undefined;
+  export let label: string;
 
-  export let big = false;
-  export let active = false;
-  export let disabled = false;
+  export let big: boolean = false;
+  export let active: boolean = false;
+  export let disabled: boolean = false;
+  export let waitOnDisabled: boolean = false;
 
-  export let secondary = false;
-  export let tertiary = false;
-  export let danger = false;
-  export let white = false;
+  export let secondary: boolean = false;
+  export let tertiary: boolean = false;
+  export let danger: boolean = false;
+  export let white: boolean = false;
   $: primary = !secondary && !tertiary && !danger && !white;
 
-  export let customPadding = '';
+  export let customPadding: string = '';
 
   const dispatch = createEventDispatcher();
 
@@ -60,7 +61,7 @@
     focusClasses = 'focus:-translate-y-px ';
     activeClasses = 'active:-translate-y-px ';
     activatedClasses = '-translate-y-px ';
-    disabledClasses = 'opacity-50 cursor-wait ';
+    disabledClasses = 'opacity-50 ' + (waitOnDisabled ? 'cursor-wait ' : '');
 
     if (primary) {
       colorClasses = `text-white bg-pink-600`;

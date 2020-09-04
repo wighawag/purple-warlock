@@ -11,7 +11,6 @@ function updateLoggingForWorker(worker) {
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', function () {
     const swLocation = `${typeof window.basepath === 'undefined' ? '/' : window.basepath}sw.js`;
-    console.log({swLocation});
     navigator.serviceWorker.register(swLocation).then((registration) => {
       updateLoggingForWorker(registration.installing);
       updateLoggingForWorker(registration.waiting);

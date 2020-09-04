@@ -78,7 +78,8 @@ const update = (request, cache) => {
   return fetch(request)
     .then((response) => {
       return caches.open(CACHE_NAME).then((cache) => {
-        if (request.method === 'GET') {
+        if (request.method === 'GET' && request.url.startsWith('http')) {
+          // only on http protocol to prevent chrome-extension request to error out
           cache.put(request, response.clone());
         }
         return response;
