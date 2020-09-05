@@ -82,10 +82,7 @@
     const size = width * scale;
 
     canvas.width = size;
-    canvas.style.width = `${size}px`;
-
     canvas.height = size;
-    canvas.style.height = `${size}px`;
 
     const cc = canvas.getContext('2d');
     cc.fillStyle = bgcolor;
@@ -128,5 +125,14 @@
     afterUpdate(update);
   });
 </script>
+
+<style>
+  canvas {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+</style>
 
 <canvas class={_class} bind:this={canvas} />
