@@ -16,8 +16,8 @@
   let name: string = undefined;
 
   async function setName() {
-    await flow.ensureReady();
-    await wallet.contracts.GobelinRegistry.setName(name);
+    const contracts = await flow.ensureContractsAreReady();
+    await contracts.GobelinRegistry.setName(name);
   }
 </script>
 

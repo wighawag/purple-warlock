@@ -15,7 +15,7 @@
 
 <slot />
 
-{#if $flow.state === 'WalletChoice'}
+{#if $flow.requestingContracts}
   <div class="bg-red-400 w-10 h-10" on:click={() => flow.cancel()} />
   <div class="bg-green-400 w-10 h-10" on:click={() => wallet.connect(wallet.options[0])} />
 {/if}
