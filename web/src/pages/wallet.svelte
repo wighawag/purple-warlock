@@ -3,7 +3,6 @@
   import WalletAccess from '../templates/WalletAccess.svelte';
   import {wallet, builtin, chain, transactions, balance} from '../stores/wallet';
   import App from '../App.svelte';
-  import type {stringify} from 'querystring';
   import type {Contract} from '@ethersproject/contracts';
 
   let contractInterfaces:
@@ -26,7 +25,7 @@
         contract: contract,
         name: name,
         functions: contract.interface.fragments
-          .filter((f) => f.type === 'function' && !f.constant)
+          .filter((f) => f.type === 'function' && !(f as any).constant)
           .map((f) => {
             const inputs = f.inputs.map((i) => ({
               name: i.name,
@@ -97,7 +96,12 @@
               </span>
             {/each}
             <span>)</span>
-            <Button secondary="true" class="w-max-content inline-block" id={func.name} on:click={() => func.call()}>
+            <Button
+              secondary={true}
+              class="w-max-content inline-block"
+              id={func.name}
+              label={func.name}
+              on:click={() => func.call()}>
               Submit
             </Button>
           </form>

@@ -122,7 +122,7 @@ importers:
       named-logs-console: 0.0.5
       svelte: 3.24.1
       svelte-hmr: 0.10.2_svelte@3.24.1
-      web3w: 0.1.3_2ac4bd5f06e5572a5ae96df0e9b5fb67
+      web3w: 'link:../../web3w'
       wonka: 4.0.14
     devDependencies:
       '@tailwindcss/ui': 0.5.0_tailwindcss@1.7.6

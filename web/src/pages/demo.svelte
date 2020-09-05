@@ -1,6 +1,7 @@
 <script lang="ts">
   import WalletAccess from '../templates/WalletAccess.svelte';
   import Button from '../components/Button.svelte';
+  import Blockie from '../components/Blockie.svelte';
 
   import names from '../stores/names';
   names.listen();
@@ -8,14 +9,14 @@
   import CommonLib from 'common-lib';
 
   import {logs} from 'named-logs';
-  import {wallet} from '../stores/wallet';
+  import {wallet, flow} from '../stores/wallet';
   const console = logs('app:home');
   console.log('CommonLib', CommonLib);
 
   let name: string = undefined;
 
   async function setName() {
-    // await wallet.ensureReady(); // TODO wallet flow
+    await flow.ensureReady();
     await wallet.contracts.GobelinRegistry.setName(name);
   }
 </script>
@@ -30,13 +31,15 @@
       <div>Loading Names...</div>
     {:else}
       {#each $names.data as name, index}
-        <div class={`flex flex-wrap -mx-2 ${name.id === $wallet.address ? 'font-bold' : 'font-normal'}`}>
-          <div class="px-2 mb-6">
+        <!-- <Blockie address={name.id} /> -->
+        <div class={`flex flex-wrap items-center -mx-2 ${name.id === $wallet.address ? 'font-bold' : 'font-normal'}`}>
+          <!-- <div class="px-2 mb-6">
             <h2 class="text-xl">{`${name.id.slice(0, 4)}...${name.id.slice(name.id.length - 4)}`} :</h2>
-          </div>
-          <div class="px-2">
+          </div> -->
+          <Blockie address={name.id} class="m-1" />
+          <span class="px-2">
             <p>{name.name}</p>
-          </div>
+          </span>
         </div>
       {/each}
     {/if}
