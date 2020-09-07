@@ -16,7 +16,7 @@
   let name: string = undefined;
 
   async function setName() {
-    await flow.execute((contracts) => contracts.GobelinRegistry.fails(name));
+    await flow.execute((contracts) => contracts.GobelinRegistry.setName(name));
   }
 </script>
 
@@ -62,8 +62,4 @@
       </button>
     </div>
   </form>
-
-  <!-- <label for="name">Set your Name</label>
-  <input type="text" id="name" bind:value={name} />
-  <Button primary="true" class="w-max-content inline-block" on:click={setName}>Set Name</Button> -->
 </WalletAccess>

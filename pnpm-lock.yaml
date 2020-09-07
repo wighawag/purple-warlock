@@ -122,7 +122,7 @@ importers:
       named-logs-console: 0.0.5
       svelte: 3.24.1
       svelte-hmr: 0.10.2_svelte@3.24.1
-      web3w: 'link:../../web3w'
+      web3w: 0.2.6_2ac4bd5f06e5572a5ae96df0e9b5fb67
       wonka: 4.0.14
     devDependencies:
       '@tailwindcss/ui': 0.5.0_tailwindcss@1.7.6
@@ -179,7 +179,7 @@ importers:
       tsconfig-paths: ^3.9.0
       tslib: ^2.0.0
       typescript: ^3.9.7
-      web3w: ^0.2.5
+      web3w: ^0.2.6
       wonka: ^4.0.14
 lockfileVersion: 5.1
 packages:
@@ -17009,6 +17009,19 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-tpu9fLIComgxGrFsD8LUtA4s4aCZk7px8UfcdEy6kS2uDi/ZfR07KJqpXZMij7Jvlq+cQrTAhsPSiBVvoMaivA==
+  /web3w/0.2.6_2ac4bd5f06e5572a5ae96df0e9b5fb67:
+    dependencies:
+      '@ethersproject/bignumber': 5.0.5
+      '@ethersproject/contracts': 5.0.3
+      '@ethersproject/providers': 5.0.6
+      named-logs: 0.0.6
+    dev: false
+    peerDependencies:
+      '@ethersproject/bignumber': ^5.0.0
+      '@ethersproject/contracts': ^5.0.0
+      '@ethersproject/providers': ^5.0.0
+    resolution:
+      integrity: sha512-gOZJ8qc4yJhKHivn1hyUb282oZIgpYeS7yPsKyQWrZj879g0LDKK5mIq9QO2if4IcBwZEvPLhXE9ktSTwS6dIQ==
   /websocket/1.0.29:
     dependencies:
       debug: 2.6.9

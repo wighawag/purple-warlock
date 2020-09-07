@@ -1,4 +1,5 @@
 <script lang="ts">
+  export let title: string = undefined;
   import Button from '../components/Button.svelte';
   import Toast from '../components/Toast.svelte';
   import Modal from '../components/Modal.svelte';
@@ -17,19 +18,19 @@
 <slot />
 
 {#if $flow.inProgress}
-  <Modal on:close={() => flow.cancel()}>
+  <Modal {title} on:close={() => flow.cancel()}>
     {#if $wallet.state === 'Idle'}
       {#if $wallet.connecting}
         Connecting to wallet...
       {:else}
         You need to connect your wallet.
-        <Button on:click={() => wallet.connect(wallet.options[0])}>connect</Button>
+        <Button label="Connect to Wallet" on:click={() => wallet.connect(wallet.options[0])}>connect</Button>
       {/if}
     {:else if $wallet.state === 'Locked'}
       {#if $wallet.unlocking}
         Please accept the application to access your wallet.
       {:else}
-        <Button on:click={() => wallet.connect(wallet.options[0])}>Unlock</Button>
+        <Button label="Unlock Wallet" on:click={() => wallet.connect(wallet.options[0])}>Unlock</Button>
       {/if}
     {:else if $chain.state === 'Idle'}
       {#if $chain.connecting}Connecting...{/if}
@@ -41,14 +42,7 @@
       {#if $flow.error.code === 4001}
         You rejected the request
       {:else if $flow.error.message}{$flow.error.message}{:else}Error: {$flow.error}{/if}
+      <Button label="Retry" on:click={() => flow.retry()}>Retry</Button>
     {/if}
   </Modal>
 {/if}
-<!-- {#if $flow.requestingContracts}
-  <div class="bg-red-400 w-10 h-10" on:click={() => flow.cancel()} />
-  <div class="bg-green-400 w-10 h-10" on:click={() => wallet.connect(wallet.options[0])} />
-{/if} -->
-
-{#if $wallet.unlocking}Unlocking...{/if}
-
-{#if $wallet.pendingUserConfirmation}Please accept transaction request...{/if}
