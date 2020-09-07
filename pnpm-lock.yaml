@@ -179,7 +179,7 @@ importers:
       tsconfig-paths: ^3.9.0
       tslib: ^2.0.0
       typescript: ^3.9.7
-      web3w: ^0.2.3
+      web3w: ^0.2.5
       wonka: ^4.0.14
 lockfileVersion: 5.1
 packages:
