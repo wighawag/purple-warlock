@@ -16,8 +16,7 @@
   let name: string = undefined;
 
   async function setName() {
-    const contracts = await flow.ensureContractsAreReady();
-    await contracts.GobelinRegistry.setName(name);
+    await flow.execute((contracts) => contracts.GobelinRegistry.fails(name));
   }
 </script>
 
