@@ -123,6 +123,7 @@ importers:
       svelte: 3.24.1
       svelte-hmr: 0.10.2_svelte@3.24.1
       web3w: 0.2.11_2ac4bd5f06e5572a5ae96df0e9b5fb67
+      web3w-torus-loader: 0.1.0
       wonka: 4.0.14
     devDependencies:
       '@tailwindcss/ui': 0.5.0_tailwindcss@1.7.6
@@ -180,6 +181,7 @@ importers:
       tslib: ^2.0.0
       typescript: ^3.9.7
       web3w: ^0.2.11
+      web3w-torus-loader: ^0.1.0
       wonka: ^4.0.14
 lockfileVersion: 5.1
 packages:
@@ -17009,6 +17011,12 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-tpu9fLIComgxGrFsD8LUtA4s4aCZk7px8UfcdEy6kS2uDi/ZfR07KJqpXZMij7Jvlq+cQrTAhsPSiBVvoMaivA==
+  /web3w-torus-loader/0.1.0:
+    dependencies:
+      named-logs: 0.0.6
+    dev: false
+    resolution:
+      integrity: sha512-y4kRyDP5jswPf2LHo8rCFTU0Z5IGFHn2kmmRbrYuYYPgDzGcGz4TjnbeXy4E3vvvVUv9SXiAGvQyMCi/+e3B1A==
   /web3w/0.2.11_2ac4bd5f06e5572a5ae96df0e9b5fb67:
     dependencies:
       '@ethersproject/bignumber': 5.0.5

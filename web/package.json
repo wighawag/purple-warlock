@@ -20,6 +20,7 @@
     "svelte": "3.24.1",
     "svelte-hmr": "0.10.2",
     "web3w": "^0.2.11",
+    "web3w-torus-loader": "^0.1.0",
     "wonka": "^4.0.14"
   },
   "devDependencies": {

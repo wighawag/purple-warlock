@@ -20,11 +20,15 @@
 {#if $flow.inProgress}
   <Modal {title} on:close={() => flow.cancel()}>
     {#if $wallet.state === 'Idle'}
-      {#if $wallet.connecting}
+      {#if $wallet.loadingModule}
+        Loading module: {$wallet.selected}
+      {:else if $wallet.connecting}
         Connecting to wallet...
       {:else}
-        You need to connect your wallet.
-        <Button label="Connect to Wallet" on:click={() => wallet.connect(wallet.options[0])}>connect</Button>
+        <p>You need to connect your wallet.</p>
+        {#each $wallet.options as option}
+          <Button label="Connect to Wallet" on:click={() => wallet.connect(option)}>{option}</Button>
+        {/each}
       {/if}
     {:else if $wallet.state === 'Locked'}
       {#if $wallet.unlocking}
