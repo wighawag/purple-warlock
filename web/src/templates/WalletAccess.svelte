@@ -30,18 +30,18 @@
       {#if $wallet.unlocking}
         Please accept the application to access your wallet.
       {:else}
-        <Button label="Unlock Wallet" on:click={() => wallet.connect(wallet.options[0])}>Unlock</Button>
+        <Button label="Unlock Wallet" on:click={() => wallet.unlock()}>Unlock</Button>
       {/if}
     {:else if $chain.state === 'Idle'}
       {#if $chain.connecting}Connecting...{/if}
     {:else if $chain.state === 'Connected'}
-      {#if $chain.loadingData}Loading contracts...{/if}
+      {#if $chain.loadingData}Loading contracts...{:else if $chain.notSupported}Please switch to mainnet{/if}
     {:else if $wallet.pendingUserConfirmation}
       Please accept transaction...
-    {:else if $flow.error}
-      {#if $flow.error.code === 4001}
+    {:else if $flow.executionError}
+      {#if $flow.executionError.code === 4001}
         You rejected the request
-      {:else if $flow.error.message}{$flow.error.message}{:else}Error: {$flow.error}{/if}
+      {:else if $flow.executionError.message}{$flow.executionError.message}{:else}Error: {$flow.executionError}{/if}
       <Button label="Retry" on:click={() => flow.retry()}>Retry</Button>
     {/if}
   </Modal>

@@ -19,7 +19,7 @@
     "named-logs-console": "0.0.5",
     "svelte": "3.24.1",
     "svelte-hmr": "0.10.2",
-    "web3w": "^0.2.6",
+    "web3w": "^0.2.11",
     "wonka": "^4.0.14"
   },
   "devDependencies": {
