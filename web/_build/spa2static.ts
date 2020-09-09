@@ -121,22 +121,6 @@ function generateServiceWorker(exportFolder: string, pages: string[]) {
       ','
   );
 
-  // URL_FIXES due to favicon request on history.pushState
-  // see https://bugs.chromium.org/p/chromium/issues/detail?id=131567
-  // https://stackoverflow.com/questions/36103904/history-pushstate-in-chrome-make-favicon-request
-  // might be able to fix it by updating favicon uri on page load to use absolute url
-  // this seems to be fixed with `document.querySelectorAll("link[href]").forEach((v) => v.href = v.href);`
-  const files = generateCacheURLs(path.join(exportFolder, 'pwa'), [''], (p) => p !== 'index.html' && p !== 'sw.js');
-  sw = sw.replace(
-    'const URLS_FIXES = [',
-    'const URLS_FIXES = [' +
-      files
-        .filter((p) => p.startsWith('favicon') || p === 'manifest.json') // TODO check which one
-        .map((v) => `'pwa/${v}'`)
-        .join(', ') +
-      ','
-  );
-
   sw = sw.replace(
     `const CACHE_NAME = 'cache-v1';`,
     `const CACHE_NAME = 'cache-${pkg.name}-${(+new Date()).toString(36)}';`
