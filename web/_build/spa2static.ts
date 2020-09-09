@@ -7,7 +7,10 @@ function print(message: string) {
   process.stdout.write(message);
 }
 
-async function generatePages(exportFolder: string, {pages, indexHtml}: {pages: string[]; indexHtml: string}) {
+async function generatePages(
+  exportFolder: string,
+  {pages, indexHtml, useBaseElem}: {pages: string[]; indexHtml: string; useBaseElem: boolean}
+) {
   print('generating pages and rebasing path relative...');
   const template = indexHtml;
   const findSrc = 'src="/';
@@ -47,16 +50,31 @@ async function generatePages(exportFolder: string, {pages, indexHtml}: {pages: s
         baseHref += '../';
       }
     }
+
+    let indexHtml = template;
+
+    let srcBaseHref = baseHref;
+    if (useBaseElem) {
+      if (baseHref !== '') {
+        const baseElem = `
+    <base href="${baseHref}">
+`;
+        const head = indexHtml.indexOf('<head>') + 6;
+        indexHtml = indexHtml.slice(0, head) + baseElem + indexHtml.slice(head);
+      }
+      srcBaseHref = '';
+    }
+
+    indexHtml = indexHtml
+      .replace(reSrc, 'src="' + srcBaseHref)
+      .replace(reSrc, 'src="' + srcBaseHref)
+      .replace(reHref, 'href="' + srcBaseHref)
+      .replace(reContent, 'content="' + srcBaseHref);
+
+    indexHtml = indexHtml.replace(reRelpath, 'window.relpath="' + baseHref);
+
     fs.ensureDirSync(folderPath);
-    fs.writeFileSync(
-      indexFilepath,
-      template
-        .replace(reSrc, 'src="' + baseHref)
-        .replace(reSrc, 'src="' + baseHref)
-        .replace(reHref, 'href="' + baseHref)
-        .replace(reContent, 'content="' + baseHref)
-        .replace(reRelpath, 'window.relpath="' + baseHref)
-    );
+    fs.writeFileSync(indexFilepath, indexHtml);
   }
 
   const findGeneric = '"/';
@@ -103,6 +121,11 @@ function generateServiceWorker(exportFolder: string, pages: string[]) {
       ','
   );
 
+  // URL_FIXES due to favicon request on history.pushState
+  // see https://bugs.chromium.org/p/chromium/issues/detail?id=131567
+  // https://stackoverflow.com/questions/36103904/history-pushstate-in-chrome-make-favicon-request
+  // might be able to fix it by updating favicon uri on page load to use absolute url
+  // this seems to be fixed with `document.querySelectorAll("link[href]").forEach((v) => v.href = v.href);`
   const files = generateCacheURLs(path.join(exportFolder, 'pwa'), [''], (p) => p !== 'index.html' && p !== 'sw.js');
   sw = sw.replace(
     'const URLS_FIXES = [',
@@ -141,6 +164,8 @@ const basePathScript = `
       if (!window.basepath.endsWith('/')) {
         window.basepath += '/';
       }
+      // ensure we save href as they are loaded, so they do not change on page navigation
+      document.querySelectorAll("link[href]").forEach((v) => v.href = v.href);
     </script>
 `;
 const redirectScript = `
@@ -163,7 +188,7 @@ const redirectScript = `
       }
     </script>
 `;
-const head = indexHtml.indexOf('<head>') + 6;
+const head = indexHtml.indexOf('</head>');
 indexHtml = indexHtml.slice(0, head) + `${basePathScript}${redirectScript}` + indexHtml.slice(head);
-generatePages(exportFolder, {pages: pagePaths, indexHtml});
+generatePages(exportFolder, {pages: pagePaths, indexHtml, useBaseElem: false});
 generateServiceWorker(exportFolder, pagePaths);

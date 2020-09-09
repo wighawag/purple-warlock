@@ -26,8 +26,8 @@ const walletStores = WalletStores({
 });
 
 if (typeof window !== 'undefined') {
+  // console.log('adding walletStores');
   /* eslint-disable @typescript-eslint/no-explicit-any */
-  console.log('adding walletStores');
   (window as any).walletStores = walletStores;
   /* eslint-enable @typescript-eslint/no-explicit-any */
 }
