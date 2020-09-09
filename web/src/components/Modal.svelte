@@ -1,8 +1,8 @@
 <script lang="ts">
   import {createEventDispatcher, onDestroy} from 'svelte';
-  export let globalCloseButton = false;
-  export let closeButton = false;
-  export let title;
+  export let globalCloseButton: boolean = false;
+  export let closeButton: boolean = false;
+  export let title: string;
 
   const dispatch = createEventDispatcher();
   const close = () => dispatch('close');
@@ -55,7 +55,9 @@
 <div class="modal opacity-80 fixed w-full h-full top-0 left-0 flex items-center justify-center">
   <div on:click={close} class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" />
 
-  <div class="modal-container bg-white w-11/12 md:max-w-md mx-auto rounded shadow-lg z-50 overflow-y-auto">
+  <div
+    class="modal-container dark:bg-black dark:border-2 dark:border-gray-800 bg-white w-11/12 md:max-w-md mx-auto rounded
+      shadow-lg z-50 overflow-y-auto">
     {#if globalCloseButton}
       <div
         on:click={close}

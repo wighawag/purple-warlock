@@ -1,10 +1,16 @@
+<script>
+  import {createEventDispatcher} from 'svelte';
+  const dispatch = createEventDispatcher();
+  const close = () => dispatch('close');
+</script>
+
 <div
   class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded min-w-2/3 fixed top-0 right-0 m-6"
   role="alert">
   <div class="mr-5">
     <slot />
   </div>
-  <span class="absolute top-0 bottom-0 right-0 px-3 py-3">
+  <span class="absolute top-0 bottom-0 right-0 px-3 py-3" on:click={close}>
     <svg
       class="fill-current h-6 w-6 text-red-500"
       role="button"

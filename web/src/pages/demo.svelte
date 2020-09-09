@@ -47,8 +47,8 @@
   <form class="w-full max-w-sm">
     <div class="flex items-center border-b border-pink-600 py-2">
       <input
-        class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight
-          focus:outline-none"
+        class="appearance-none bg-transparent border-none w-full text-gray-700 dark:text-gray-300 mr-3 py-1 px-2
+          leading-tight focus:outline-none"
         type="text"
         placeholder="Jane Doe"
         aria-label="Full name"

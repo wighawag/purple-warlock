@@ -16,8 +16,8 @@ async function generatePages(exportFolder: string, {pages, indexHtml}: {pages: s
   const reHref = new RegExp(findHref, 'g');
   const findContent = 'content="/';
   const reContent = new RegExp(findContent, 'g');
-  const findBasepath = 'window.basepath="/';
-  const reBasepath = new RegExp(findBasepath, 'g');
+  const findRelpath = 'window.relpath="/';
+  const reRelpath = new RegExp(findRelpath, 'g');
 
   const assets = fs.readdirSync(path.join(exportFolder, '_assets'));
   const findAssetPaths = '"/_assets';
@@ -55,7 +55,7 @@ async function generatePages(exportFolder: string, {pages, indexHtml}: {pages: s
         .replace(reSrc, 'src="' + baseHref)
         .replace(reHref, 'href="' + baseHref)
         .replace(reContent, 'content="' + baseHref)
-        .replace(reBasepath, 'window.basepath="' + baseHref)
+        .replace(reRelpath, 'window.relpath="' + baseHref)
     );
   }
 
@@ -129,7 +129,19 @@ const exportFolder = 'dist';
 let indexHtml = fs.readFileSync(path.join(exportFolder, 'index.html')).toString();
 const pagePaths = pages.map((v) => v.path);
 const basePathScript = `
-    <script>window.basepath="/";</script>
+    <script>
+      window.relpath="/";
+      const count = (window.relpath.match(/\.\./g) || []).length;
+      let lPathname = location.pathname;
+      if (lPathname.endsWith('/')) {
+        lPathname = lPathname.slice(0, lPathname.length - 1);
+      }
+      const pathSegments = lPathname.split('/');
+      window.basepath = pathSegments.slice(0, pathSegments.length - count).join('/');
+      if (!window.basepath.endsWith('/')) {
+        window.basepath += '/';
+      }
+    </script>
 `;
 const redirectScript = `
     <script>

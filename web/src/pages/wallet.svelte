@@ -68,11 +68,11 @@
     </Button>
     <Button
       class="m-4"
-      label="logout from wallet"
+      label="disconnect from wallet"
       waitOnDisabled={$wallet.connecting}
       disabled={$wallet.state !== 'Ready' || $wallet.connecting}
-      on:click={() => wallet.logout()}>
-      logout
+      on:click={() => wallet.disconnect()}>
+      disconnect
     </Button>
   </div>
 

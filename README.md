@@ -90,13 +90,14 @@ For production and staging, you would need to set MENMONIC too in the respective
 
 You can remove the env if you want to use the same as the one in `.env`
 
-You ll also need to update the following for staging and production :
+You'll also need to update the following for staging and production :
 
+- `CHAIN_ID=<id of the chain where contracts lives>`
 - `SUBGRAPH_NAME=<thegraph account name>/<subgraph name>`
 - `VITE_THE_GRAPH_HTTP=https://api.thegraph.com/subgraphs/name/<thegraph account name>/<subgraph name>`
 - `VITE_THE_GRAPH_WS=wss://api.thegraph.com/subgraphs/name/<thegraph account name>/<subgraph name>`
 
-you then need to ensure you have a subgraph already created on thegraph.com with that name
+you then need to ensure you have a subgraph already created on thegraph.com with that name: https://thegraph.com/explorer/dashboard
 
 finally execute the following for staging :
 
@@ -104,7 +105,7 @@ finally execute the following for staging :
 pnpm run staging
 ```
 
-for production (ethereum mainnet):
+for production:
 
 ```
 pnpm run production
