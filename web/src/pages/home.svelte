@@ -5,7 +5,13 @@
 
 <section class="py-8 px-4 text-center">
   <div class="max-w-auto md:max-w-lg mx-auto">
-    <img class="mb-8 mx-auto" src="images/logo.svg" alt={name} width="256px" height="256px" />
+    <img
+      class="mb-8 mx-auto"
+      src="images/logo.svg"
+      alt={name}
+      style="width:256px;height:256px;"
+      width="256px"
+      height="256px" />
     <h2 class="text-5xl mb-2 font-heading">{name}</h2>
     <p class="mb-6 text-gray-500">A template to build decentralised applications</p>
     <div class="max-w-md mx-auto mt-5 space-y-3 md:mt-8 md:space-y-5">

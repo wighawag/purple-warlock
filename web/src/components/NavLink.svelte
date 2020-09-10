@@ -12,7 +12,7 @@
 
   let active: boolean;
   $: route = router.route(name);
-  $: active = activeInteraction(route, $response, {params, partial});
+  $: active = $response && activeInteraction(route, $response, {params, partial});
 </script>
 
 {#if active}

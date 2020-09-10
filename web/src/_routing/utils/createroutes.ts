@@ -4,16 +4,37 @@ import {browser, createBase} from '@hickory/browser';
 import routes from '../../pages';
 
 const routesConfig = [];
+
 for (const routePath of routes) {
-  routesConfig.push({
-    name: routePath.name,
-    path: !routePath.path || routePath.path == '/' ? '' : routePath.path + '/',
-    respond() {
-      return {
-        body: routePath.component,
-      };
-    },
-  });
+  if (routePath.asyncComponent) {
+    routesConfig.push({
+      name: routePath.name,
+      path: !routePath.path || routePath.path == '/' ? '' : routePath.path + '/',
+      respond({resolved, error}) {
+        let data;
+        if (error) {
+          data = {error};
+        }
+        return {
+          body: resolved,
+          data,
+        };
+      },
+      resolve() {
+        return routePath.asyncComponent().then((c) => c.default);
+      },
+    });
+  } else {
+    routesConfig.push({
+      name: routePath.name,
+      path: !routePath.path || routePath.path == '/' ? '' : routePath.path + '/',
+      respond() {
+        return {
+          body: routePath.component,
+        };
+      },
+    });
+  }
 }
 
 const options: RouterOptions = {};
