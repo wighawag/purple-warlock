@@ -3,6 +3,12 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 const tailwindUI = require('@tailwindcss/ui');
 
 module.exports = {
+  variants: {
+    backgroundColor: ['responsive', 'hover', 'focus', 'disabled'],
+    // borderWidth: ['responsive', 'disabled'],
+    borderColor: ['responsive', 'hover', 'focus', 'disabled'],
+    cursor: ['responsive', 'disabled'],
+  },
   purge: {
     mode: 'all',
     content: [

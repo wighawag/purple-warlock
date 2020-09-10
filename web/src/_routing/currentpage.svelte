@@ -5,4 +5,5 @@
 
 {#if $response}
   <svelte:component this={$response.body} />
-{:else}Loading...{/if} // TODO
+{:else}Loading...{/if}
+<!-- TODO loading-->

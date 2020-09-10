@@ -1,5 +1,5 @@
 import {expect} from './chai-setup';
-import {ethers, deployments} from '@nomiclabs/buidler';
+import {ethers, deployments, getUnnamedAccounts} from '@nomiclabs/buidler';
 
 describe('GobelinRegistry', function () {
   it('should work', async function () {
@@ -14,9 +14,13 @@ describe('GobelinRegistry', function () {
     expect(gobelinRegistryContract.fails('testing')).to.be.revertedWith('fails');
   });
 
-  it('should return 2 as id', async function () {
+  it('setMessage works', async function () {
     await deployments.fixture();
-    const gobelinRegistryContract = await ethers.getContract('GobelinRegistry');
-    expect(await gobelinRegistryContract.getId()).to.equal(2);
+    const others = await getUnnamedAccounts();
+    const gobelinRegistryContract = await ethers.getContract('GobelinRegistry', others[0]);
+    const testMessage = 'Hello World';
+    await expect(gobelinRegistryContract.setMessage(testMessage))
+      .to.emit(gobelinRegistryContract, 'MessageChanged')
+      .withArgs(others[0], testMessage);
   });
 });

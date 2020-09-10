@@ -1,16 +1,17 @@
 import {writable} from 'svelte/store';
 import {query} from '../utils/graphql';
 
-export type NamesData = {
+export type MessagesData = {
   id: string;
-  name: string;
+  message: string;
+  timestamp: string;
 };
 
 const $data: {
   status: string | undefined;
   error: unknown;
   listenning: boolean;
-  data?: NamesData[];
+  data?: MessagesData[];
 } = {
   status: undefined,
   error: undefined,
@@ -19,8 +20,6 @@ const $data: {
 const {subscribe, set} = writable($data);
 
 function _set(data) {
-  // TODO remove:
-  // console.log('PLANETS', data);
   Object.assign($data, data);
   set($data);
 }
@@ -39,9 +38,9 @@ function transform(result) {
   if (result.data) {
     // console.log({data: result.data});
     _set({status: 'Ready'});
-    if (result.data.namedEntities) {
-      const names = result.data.namedEntities;
-      _set({data: names});
+    if (result.data.messageEntries) {
+      const messages = result.data.messageEntries;
+      _set({data: messages});
     } else {
       _set({data: {}});
     }
@@ -64,9 +63,10 @@ async function listen() {
   query({
     query: `
       query {
-        namedEntities {
+        messageEntries(orderBy: timestamp, orderDirection: desc, first: 10) {
           id
-          name
+          message
+          timestamp
         }
       }
     `,
@@ -85,6 +85,6 @@ export default dataStore = {
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 if (typeof window !== 'undefined') {
-  (window as any).names = dataStore;
+  (window as any).messageEntries = dataStore;
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */

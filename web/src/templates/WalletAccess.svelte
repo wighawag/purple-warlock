@@ -8,6 +8,8 @@
 
   const base: string = window.basepath || '/';
 
+  $: executionError = $flow.executionError as any;
+
   let options: {img: string; id: string; name: string}[] = [];
   $: options = $wallet.options.map((v) => {
     return {
@@ -97,10 +99,10 @@
       {#if $chain.loadingData}Loading contracts...{:else if $chain.notSupported}Please switch to mainnet{/if}
     {:else if $wallet.pendingUserConfirmation}
       Please accept transaction...
-    {:else if $flow.executionError}
-      {#if $flow.executionError.code === 4001}
+    {:else if executionError}
+      {#if executionError.code === 4001}
         You rejected the request
-      {:else if $flow.executionError.message}{$flow.executionError.message}{:else}Error: {$flow.executionError}{/if}
+      {:else if executionError.message}{executionError.message}{:else}Error: {executionError}{/if}
       <Button label="Retry" on:click={() => flow.retry()}>Retry</Button>
     {/if}
   </Modal>
