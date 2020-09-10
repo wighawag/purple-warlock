@@ -11,8 +11,6 @@ if (chainId === '1337' || chainId === '31337') {
 }
 
 const walletStores = WalletStores({
-  // log: console,
-  // debug: true,
   chainConfigs: contractsInfo,
   builtin: {autoProbe: true},
   options: [
