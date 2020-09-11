@@ -41,7 +41,7 @@
         <Feature title="Everything Hot Reload">
           On contract changes, contract get to keep their address and code get updated automatically. On frontend
           changes, module get replaced using blazing fast <a
-            class="text-blue-500"
+            class="text-blue-600"
             href="https://github.com/vitejs/vite">vite</a> es module hot reload. On subgraph changes, the graph get updated
           and rexecuted.
         </Feature>
