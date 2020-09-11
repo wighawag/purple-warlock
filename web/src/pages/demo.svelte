@@ -4,21 +4,67 @@
   import Blockie from '../components/Blockie.svelte';
 
   import messages from '../stores/messages';
-  messages.listen();
-
   import CommonLib from 'common-lib';
-
   import {logs} from 'named-logs';
-  import {wallet, flow} from '../stores/wallet';
-  const console = logs('app:home');
-  console.log('CommonLib', CommonLib);
-
-  let message: string = undefined;
+  import {wallet, flow, chain} from '../stores/wallet';
 
   async function setMessage() {
     await flow.execute((contracts) => contracts.GobelinRegistry.setMessage(message));
   }
+
+  const console = logs('app:home');
+
+  messages.listen();
+
+  let message: string = undefined;
+
+  console.log('CommonLib', CommonLib);
 </script>
+
+<style>
+  ::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: gray;
+    opacity: 0.5;
+  }
+  ::-moz-placeholder {
+    /* Firefox 19+ */
+    color: gray;
+    opacity: 0.5;
+  }
+  :-ms-input-placeholder {
+    /* IE 10+ */
+    color: gray;
+    opacity: 0.5;
+  }
+  :-moz-placeholder {
+    /* Firefox 18- */
+    color: gray;
+    opacity: 0.5;
+  }
+  @media (prefers-color-scheme: dark) {
+    ::-webkit-input-placeholder {
+      /* Chrome/Opera/Safari */
+      color: pink;
+      opacity: 0.5;
+    }
+    ::-moz-placeholder {
+      /* Firefox 19+ */
+      color: pink;
+      opacity: 0.5;
+    }
+    :-ms-input-placeholder {
+      /* IE 10+ */
+      color: pink;
+      opacity: 0.5;
+    }
+    :-moz-placeholder {
+      /* Firefox 18- */
+      color: pink;
+      opacity: 0.5;
+    }
+  }
+</style>
 
 <WalletAccess>
   <section class="py-8 px-4">
@@ -52,7 +98,7 @@
           leading-tight focus:outline-none"
         type="text"
         placeholder="Hello world!"
-        aria-label="Full name"
+        aria-label="Your Message"
         bind:value={message} />
       <button
         disabled={!message || message === ''}
@@ -64,4 +110,14 @@
       </button>
     </div>
   </form>
+
+  {#if $wallet.state === 'Ready'}
+    <form class="mt-5 w-full max-w-sm">
+      <div class="flex items-center">
+        <Button disabled={$wallet.unlocking || $chain.connecting} on:click={() => wallet.disconnect()}>
+          Disconnect
+        </Button>
+      </div>
+    </form>
+  {/if}
 </WalletAccess>
