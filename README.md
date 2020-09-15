@@ -110,3 +110,7 @@ for production:
 ```
 pnpm run production
 ```
+
+For webapp:build you can also use [fleek](https://fleek.co). The repo provide a `.fleek.json` file already setup
+
+The only thing needed is setting up the environment variables (VITE_THE_GRAPH_WS, VITE_THE_GRAPH_HTTP, VITE_CHAIN_ID). You can either set them in fleek dashboard or set them in `.fleek.json`
