@@ -2,8 +2,9 @@ import {getUnnamedAccounts, ethers} from '@nomiclabs/buidler';
 
 const messages = ['Hello', '你好', 'سلام', 'здравствуйте', 'Habari', 'Bonjour', 'नमस्ते'];
 
-// TODO move to util
-const waitFor = <T>(p: Promise<{wait: () => Promise<T>}>) => p.then((tx) => tx.wait());
+function waitFor<T>(p: Promise<{wait: () => Promise<T>}>): Promise<T> {
+  return p.then((tx) => tx.wait());
+}
 
 async function main() {
   const others = await getUnnamedAccounts();

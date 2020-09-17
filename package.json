@@ -22,6 +22,8 @@
     "postinstall": "node ./.setup.js && node fix_ethers_modules.js",
     "preinstall": "npx only-allow pnpm",
 
+    "test": "run-s contracts:test",
+
     "// externals : Setup external services locally (ethereum node, thegraph)": "",
     "externals:down": "docker-compose down -v",
     "externals": "dotenv -e .env -e contracts/.env -- docker-compose up",
@@ -33,6 +35,7 @@
     "common:build": "npm --prefix common-lib run build",
 
     "// contracts : deploy smart contracts on local ethereum node": "",
+    "contracts:test": "npm --prefix contracts test",
     "contracts:clean": "rimraf contracts/deployments/localhost && rimraf web/src/contracts.json",
     "contracts": "dotenv -e .env -e contracts/.env -- npm --prefix contracts run local:dev -- --export ../web/src/contracts.json",
     "shell:contracts": "newsh \"npm run contracts\"",
