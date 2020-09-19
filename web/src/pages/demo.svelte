@@ -2,10 +2,9 @@
   import WalletAccess from '../templates/WalletAccess.svelte';
   import Button from '../components/Button.svelte';
   import Blockie from '../components/Blockie.svelte';
-
-  import messages from '../stores/messages';
-  import CommonLib from 'common-lib';
+  import {test} from 'common-lib';
   import {logs} from 'named-logs';
+  import messages from '../stores/messages';
   import {wallet, flow, chain} from '../stores/wallet';
 
   async function setMessage() {
@@ -14,11 +13,11 @@
 
   const console = logs('app:home');
 
-  messages.listen();
+  messages.fetch();
 
   let message: string = undefined;
 
-  console.log('CommonLib', CommonLib);
+  console.log('CommonLib', test('0x0000000000000000000000000000000000000001', 'hello'));
 </script>
 
 <style>
@@ -68,11 +67,11 @@
 
 <WalletAccess>
   <section class="py-8 px-4">
-    {#if !$messages.status}
+    {#if !$messages.state}
       <div>Messages not loaded</div>
-    {:else if $messages.status === 'Error'}
-      <div>Error</div>
-    {:else if $messages.status === 'Loading'}
+    {:else if $messages.error}
+      <div>Error: {$messages.error}</div>
+    {:else if $messages.state === 'Fetching'}
       <div>Loading Messages...</div>
     {:else}
       {#each $messages.data as message, index}

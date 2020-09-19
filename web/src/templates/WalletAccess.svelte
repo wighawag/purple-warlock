@@ -16,7 +16,6 @@
       img: ((v) => {
         if (v === 'builtin') {
           if ($builtin.state === 'Ready') {
-            // TODO $builtin.available
             if ($builtin.vendor === 'Metamask') {
               return 'images/metamask.svg';
             } else if ($builtin.vendor === 'Opera') {
@@ -33,7 +32,7 @@
         }
       })(v),
       id: v,
-      name: v, // TODO
+      name: v,
     };
   });
 
@@ -59,7 +58,6 @@
   <Toast on:close={acknowledgeFlash}>
     <strong class="font-bold">{flashQueue[0].title}</strong>
     <span class="block sm:inline">{flashQueue[0].message}</span>
-    <!-- TODO -->
   </Toast>
 {/if}
 

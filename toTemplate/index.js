@@ -108,7 +108,7 @@ try {
             //     console.log('CHUNK', chunk.toString());
             // }
             contents[entry.path] += chunk;
-            // TODO streaming seatch and replace
+            // TODO streaming search and replace
             // var upperChunk = chunk.toString().toUpperCase();
             // this.push(upperChunk);
             cb();
