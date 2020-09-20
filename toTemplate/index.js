@@ -66,6 +66,8 @@ fs.removeSync(archivePath);
 fs.emptyDirSync(dest);
 execSync(`git archive ${branch} -o ${archivePath}`);
 
+const exclude = ['.gitmodules', 'export', 'archive.tar.gz', 'toTemplate/', 'contracts/deployment/staging', 'TODO.md'];
+
 const contents = {};
 console.log('extracting...', {archivePath, dest});
 try {
@@ -79,12 +81,21 @@ try {
     },
     filter(path) {
       console.log(path);
-      return (
-        path !== '.gitmodules' &&
-        !path.startsWith('export/') &&
-        path !== 'archive.tar.gz' &&
-        !path.startsWith('toTemplate/')
-      );
+      for (const pathToExclude of exclude) {
+        if (path === pathToExclude) {
+          return false;
+        }
+        if (pathToExclude.endsWith('/')) {
+          if (path.startsWith(pathToExclude)) {
+            return false;
+          }
+        } else {
+          if (path.startsWith(pathToExclude + '/')) {
+            return false;
+          }
+        }
+      }
+      return true;
     },
     transform(entry) {
       // console.log(entry.path);

@@ -1,6 +1,4 @@
-[ ] remove staging deployments (better: automatically remove when exporting to template)
 [ ] remove TODOs comments
-[ ] make that file not appears via toTemplate
 [ ] remove .vscode folder or test it
 [ ] remove unecessary comments
 [ ] decide whether showcasing migration is a good idea ?
@@ -14,7 +12,6 @@
 [ ] switch to mainnet message => based on chainId (supportedChainIds in web3w?)
 [ ] update to latest thegraph ?
 [ ] add buidler-preprocessor to remove console.log on live network
-[ ] setup solidty-coverage
 [ ] add gas report ? via new plugin ?
 [ ] read query in url for using different subgraph
 [ ] add settings menu to change thegraph url
