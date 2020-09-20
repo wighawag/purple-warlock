@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const {execSync} = require('child_process');
+const {isBinaryFileSync} = require('isbinaryfile');
 // execSync('npm install --no-save change-case@4.1.1 fs-extra@9.0.0 tar@5.0.1')
 
 const {Transform} = require('stream');
@@ -53,7 +54,38 @@ function findAndReplaceAll(str) {
   return str;
 }
 
-const transform = findAndReplaceAll;
+function transform(path, str) {
+  // TODO detect binary
+  if (!(path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.jpeg') || path.endsWith('.webp'))) {
+    str = findAndReplaceAll(str);
+  }
+
+  if (path === 'README.md') {
+    return str.replace(
+      '<!--   -->',
+      `<!-- {{% it.template }} -->
+
+    # decentralised-application
+    
+    A template to build a decentralised applicaiton using ethereum, buidler, svelte and thegraph
+    
+    to make an app out of it, execute the following
+    
+    \`\`\`
+    npx init-from wighawag/decentralised-application <your-app-folder>
+    \`\`\`
+    
+    or if you want the name to be different than the folder or the contract name to be different too
+    
+    \`\`\`
+    npx init-from wighawag/decentralised-application <your-app-folder> --name "<Your App Name>" --contractName "<your Contract Name>"
+    \`\`\`
+    
+    <!-- {{%}}  -->`
+    );
+  }
+  return str;
+}
 
 const archivePath = 'archive.tar.gz';
 const dest = 'export';
@@ -66,7 +98,7 @@ fs.removeSync(archivePath);
 fs.emptyDirSync(dest);
 execSync(`git archive ${branch} -o ${archivePath}`);
 
-const exclude = ['.gitmodules', 'export', 'archive.tar.gz', 'toTemplate/', 'contracts/deployment/staging', 'TODO.md'];
+const exclude = ['.gitmodules', 'export', 'archive.tar.gz', 'toTemplate/', 'contracts/deployments/staging', 'TODO.md'];
 
 const contents = {};
 console.log('extracting...', {archivePath, dest});
@@ -76,7 +108,7 @@ try {
     file: archivePath,
     sync: true,
     onentry(entry) {
-      entry.path = transform(entry.path);
+      entry.path = transform(entry.path, entry.path);
       return entry;
     },
     filter(path) {
@@ -98,6 +130,9 @@ try {
       return true;
     },
     transform(entry) {
+      if (fs.existsSync(entry.path) && isBinaryFileSync(entry.path)) {
+        return undefined;
+      }
       // console.log(entry.path);
       // console.log(entry.bufferLength);
       let chunks = {};
@@ -130,7 +165,7 @@ try {
             //     console.log(content);
             // }
             // console.log('flushing ' + entry.path);
-            this.push(transform(content));
+            this.push(transform(entry.path, content));
             delete contents[entry.path];
             cb();
           },
