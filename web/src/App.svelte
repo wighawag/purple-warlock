@@ -1,10 +1,10 @@
 <script lang="ts">
-  import Router from './_routing/router.svelte';
-  import CurrentPage from './_routing/currentpage.svelte';
+  import {Router, CurrentPage} from './_routing';
+  import pages from './pages';
   import Navbar from './components/Navbar.svelte';
 </script>
 
-<Router>
+<Router {pages} globalQueryStrings={['subgraph', 'debug', 'log']}>
   <Navbar links={['Home', 'Demo', 'Wallet']} />
-  <CurrentPage />
+  <CurrentPage>Loading...</CurrentPage>
 </Router>
