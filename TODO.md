@@ -1,6 +1,6 @@
+[ ] remove web3w from vite.config.js
 [ ] improve features description
 [ ] test dev + staging deployment
-[ ] remove unecessary comments
 [ ] improve wallet modal
 [ ] remove wallet page ?
 [ ] Better loading... see `web/src/_routing/currentpage`
@@ -10,7 +10,7 @@
 [ ] switch to mainnet message => based on chainId (supportedChainIds in web3w?)
 [ ] update to latest thegraph ?
 [ ] read query in url for using different subgraph
-[ ] add settings menu to change thegraph url
+[ ] add settings menu to change thegraph url (use query or local storage ?)
 [ ] document more (ganache block time, live reload, fix_ethers_module.js, etc...)
 
 [ ] add gas report ? via new plugin ?
