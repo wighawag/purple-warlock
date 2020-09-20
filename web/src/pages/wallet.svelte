@@ -56,8 +56,8 @@
       on:click={() => builtin.probe()}>
       probe Builtin
     </Button>
-    <Button class="m-4" label="select builtin wallet" on:click={() => wallet.connect('builtin')}>builtin</Button>
-    <Button class="m-4" label="select portis wallet" on:click={() => wallet.connect('portis')}>portis</Button>
+    <Button class="m-4" label="connect via builtin wallet" on:click={() => wallet.connect('builtin')}>builtin</Button>
+    <Button class="m-4" label="connect via google" on:click={() => wallet.connect('google')}>google</Button>
     <Button
       class="m-4"
       label="unlock wallet"

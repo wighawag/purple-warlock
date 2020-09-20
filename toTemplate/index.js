@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const {execSync} = require('child_process');
 const {isBinaryFileSync} = require('isbinaryfile');
 // execSync('npm install --no-save change-case@4.1.1 fs-extra@9.0.0 tar@5.0.1')
@@ -55,11 +56,7 @@ function findAndReplaceAll(str) {
 }
 
 function transform(path, str) {
-  // TODO detect binary
-  if (!(path.endsWith('.png') || path.endsWith('.jpg') || path.endsWith('.jpeg') || path.endsWith('.webp'))) {
-    str = findAndReplaceAll(str);
-  }
-
+  str = findAndReplaceAll(str);
   if (path === 'README.md') {
     return str.replace(
       '<!--   -->',
