@@ -25,7 +25,7 @@
     },
     "solidity.linter": "solhint",
     "solidity.enableLocalNodeCompiler": false,
-    "solidity.compileUsingLocalVersion": "contracts/cache/compilers/soljson-v0.6.5+commit.f956cc89.js",
+    "solidity.compileUsingRemoteVersion": "0.7.1+commit.f4a555be.Emscripten.clang",
     "solidity.packageDefaultDependenciesContractsDirectory": "contracts/src",
     "solidity.packageDefaultDependenciesDirectory": "contracts/node_modules",
     "editor.codeActionsOnSave": {
