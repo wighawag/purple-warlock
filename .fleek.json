@@ -1,7 +1,7 @@
 {
   "build": {
     "image": "node:12",
-    "command": "npm install && npm run staging:web:build",
+    "command": "npm install && npm run prepare && npm run staging:web:build",
     "publicDir": "web/dist"
   }
  }
