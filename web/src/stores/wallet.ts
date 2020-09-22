@@ -17,7 +17,7 @@ const walletStores = WalletStores({
     new TorusModuleLoader({verifier: 'google', fallbackUrl, chainId}),
     new TorusModuleLoader({verifier: 'facebook', fallbackUrl, chainId}),
     new TorusModuleLoader({verifier: 'discord', fallbackUrl, chainId}),
-    new WalletConnectModuleLoader({fallbackUrl, chainId}),
+    new WalletConnectModuleLoader({fallbackUrl, chainId, infuraId: 'bc0bdd4eaac640278cdebc3aa91fabe4'}),
   ],
 });
 
