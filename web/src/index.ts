@@ -1,4 +1,4 @@
-import logger from 'named-logs-console';
+import * as logger from 'named-logs-console';
 import './service-worker-handler';
 import App from './App.svelte';
 

@@ -69,6 +69,7 @@
     "web:generate": "dotenv -- npm --prefix web run generate",
     
     "// STAGING : deploy on staging": "",
+    "staging:web:dev": "dotenv -e .env.staging -e .env -- npm --prefix web run dev",
     "staging:web:build": "run-s web:generate staging:contracts:export common:build staging:web:rebuild",
     "staging:web:rebuild": "dotenv -e .env.staging -e .env -- npm --prefix web run build",
     "staging:web:deploy": "dotenv -e .env.staging -e .env -- npm --prefix web run deploy",
