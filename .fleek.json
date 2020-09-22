@@ -1,6 +1,6 @@
 {
   "build": {
-    "image": "node:latest",
+    "image": "node:12",
     "command": "npm install && npm run staging:web:build",
     "publicDir": "web/dist"
   }
