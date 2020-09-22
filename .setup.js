@@ -15,7 +15,7 @@ function writeIfNotExists(p, content) {
   }
 }
 
-['purple-warlock.code-workspace', '.vscode/settings.json', '.env', '.env.production', '.env.staging'].map(
+['purple-warlock.code-workspace', '.env', '.env.production', '.env.staging'].map(
   copyFromDefault
 );
 
