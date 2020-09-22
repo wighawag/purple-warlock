@@ -1,6 +1,6 @@
 [ ] remove web3w from vite.config.js
 [ ] improve features description
-[ ] test dev + staging deployment
+[ ] test: dev mode, build mode, staging, smart contract changes, graph changes, frontend changes, css changes, common-lib changes
 
 [ ] improve wallet modal
 [ ] Modal for metamask download when no builtin available
