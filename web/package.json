@@ -49,7 +49,7 @@
     "validate": "svelte-check && tsc --noEmit",
     "dev": "svite -ts",
     "build": "svite build -ts && npm run spa2static",
-    "staging:build": "svite build --mode staging -ts && npm run spa2static",
+    "build:dev": "svite build -ts --mode development && npm run spa2static",
     "serve": "ipfs-emulator --only -d dist -p 8080",
     "build:serve": "npm run build && npm run serve",
     "generate": "ts-node --project _build/tsconfig.json _build/generate.ts",

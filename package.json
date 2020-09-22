@@ -70,7 +70,9 @@
     
     "// STAGING : deploy on staging": "",
     "staging:web:dev": "dotenv -e .env.staging -e .env -- npm --prefix web run dev",
+    "staging:web:build:dev": "run-s web:generate staging:contracts:export common:build staging:web:rebuild:dev",
     "staging:web:build": "run-s web:generate staging:contracts:export common:build staging:web:rebuild",
+    "staging:web:rebuild:dev": "dotenv -e .env.staging -e .env -- npm --prefix web run build:dev",
     "staging:web:rebuild": "dotenv -e .env.staging -e .env -- npm --prefix web run build",
     "staging:web:deploy": "dotenv -e .env.staging -e .env -- npm --prefix web run deploy",
     "staging:seed": "dotenv -e .env.staging -e .env -- npm --prefix contracts run staging:seed",

@@ -1,6 +1,7 @@
 [ ] remove web3w from vite.config.js
 [ ] improve features description
 [ ] test: dev mode, build mode, staging, smart contract changes, graph changes, frontend changes, css changes, common-lib changes
+[ ] remove staging:web:build:dev from fleek.json (use non-dev)
 
 [ ] improve wallet modal
 [ ] Modal for metamask download when no builtin available
