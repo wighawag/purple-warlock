@@ -15,6 +15,8 @@
 
 [ ] document more (ganache block time, live reload, fix_ethers_module.js, etc...)
 
+[ ] Add offline detection and message
+
 [ ] add settings menu to change thegraph url (use query or local storage ?)
 [ ] add gas report ? via new plugin ?
 [ ] remove dark mode or setup so user can switch

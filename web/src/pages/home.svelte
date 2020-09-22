@@ -50,8 +50,7 @@
           app is only 15kB. The rest is loaded on demand.
         </Feature>
         <Feature title="Fully IPFS Ready">
-          Fully IPFS ready. The web app works on both IPFS's hash based url and ENS/DNS url (not an easy feat by the
-          way). PWA works on IPFS too with scoped service workers.
+          Fully IPFS ready with proper url routing. The web app works on both IPFS urls and ENS/DNS urls. PWA works on IPFS too with scoped service workers.
         </Feature>
         <Feature title="All in Typescript">The whole app including contracts test is written in typescript.</Feature>
         <Feature title="Great Dev experience">
