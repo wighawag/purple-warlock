@@ -1,3 +1,19 @@
+<script lang="ts">
+  export let cancel: () => void = undefined;
+  cancel;
+  // function handle_keydown(evt: KeyboardEvent | undefined) {
+  //   evt = evt || (window.event as KeyboardEvent);
+  //   var isEscape = false;
+  //   if ('key' in evt) {
+  //     isEscape = evt.key === 'Escape' || evt.key === 'Esc';
+  //   } else {
+  //     isEscape = (evt as KeyboardEvent).keyCode === 27;
+  //   }
+  //   if (isEscape) {
+  //     cancel();
+  //   }
+  // }
+</script>
 <style>
   @keyframes scale {
     from {
@@ -29,5 +45,5 @@
     box-shadow:0 2px 2px rgba(0,0,0,.2);
   }
 </style>
-
+<!-- <svelte:window on:keydown={handle_keydown} /> -->
 <div class="page-loading"></div>

@@ -3,6 +3,8 @@
 [ ] test: dev mode, build mode, staging, smart contract changes, graph changes, frontend changes, css changes, common-lib changes
 [ ] remove staging:web:build:dev from fleek.json (use non-dev)
 
+[ ] remove Loading esc button for cancel
+
 [ ] improve wallet modal
 [ ] Modal for metamask download when no builtin available
 
