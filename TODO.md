@@ -4,6 +4,9 @@
 [ ] remove staging:web:build:dev from fleek.json (use non-dev)
 
 [ ] remove Loading esc button for cancel
+[ ] nom audit checks
+[ ] transactions page
+[ ] loading sign next to message (after submitting tx, until it get confirmed)
 
 [ ] improve wallet modal
 [ ] Modal for metamask download when no builtin available

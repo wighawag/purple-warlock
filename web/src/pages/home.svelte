@@ -43,11 +43,11 @@
           changes, module get replaced using blazing fast <a
             class="text-blue-600"
             href="https://github.com/vitejs/vite">vite</a> es module hot reload. On subgraph changes, the graph get updated
-          and rexecuted.
+          and reexecuted.
         </Feature>
         <Feature title="PWA ready: 100% Lighthouse score">
           The web app is fully PWA compliant, with offline caching, etc... The javascript code necessary to launch the
-          app is only 15kB. The rest is loaded on demand.
+          app is less than 50kB (uncompressed), including the home page content. The rest is loaded on demand.
         </Feature>
         <Feature title="Fully IPFS Ready">
           Fully IPFS ready with proper url routing. The web app works on both IPFS urls and ENS/DNS urls. PWA works on IPFS too with scoped service workers.
@@ -55,11 +55,14 @@
         <Feature title="All in Typescript">The whole app including contracts test is written in typescript.</Feature>
         <Feature title="Great Dev experience">
           buidler for contracts, buidler-deploy for contract deployment, thegraph for contract caching, waffle for chai
-          matchers
+          matchers, svelte for frontend, vite for HMR (Hot Module Replacement) and production build
+        </Feature>
+        <Feature title="Code Splitting and Tree Shaking">
+          By using vite, the frontend benefit from code splitting an dyanmic import as well as tree shaking.
         </Feature>
         <Feature title="One command deploy">
           Everything is setup, except for the private ENV variable to deploy the contracts, the subgraph and the web
-          app, all at once.
+          app, all at once. It also include [fleek](fleek.co) config for automatic deployment.
         </Feature>
       </div>
     </div>
