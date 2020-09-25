@@ -22,7 +22,7 @@
     "svelte": "^3.25.1",
     "typescript": "3.9.7",
     "wait-on": "^5.1.0",
-    "wighawag_newsh": "^0.0.5"
+    "wighawag_newsh": "0.0.6"
   },
   "scripts": {
     "prepare": "node ./.setup.js && npm-recursive-install --skip-root",
