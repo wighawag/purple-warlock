@@ -47,18 +47,29 @@
         </Feature>
         <Feature title="PWA ready: 100% Lighthouse score">
           The web app is fully PWA compliant, with offline caching, etc... The javascript code necessary to launch the
-          app is less than 50kB (uncompressed), including the home page content. The rest is loaded on demand.
+          app is less than 50kB (15kB compressed), including the home page content. The rest is loaded on demand.
         </Feature>
         <Feature title="Fully IPFS Ready">
-          Fully IPFS ready with proper url routing. The web app works on both IPFS urls and ENS/DNS urls. PWA works on IPFS too with scoped service workers.
+          Fully IPFS ready with proper url routing. The web app works on both IPFS urls and ENS/DNS urls. PWA works on
+          IPFS too with scoped service workers.
         </Feature>
         <Feature title="All in Typescript">The whole app including contracts test is written in typescript.</Feature>
         <Feature title="Great Dev experience">
-          buidler for contracts, buidler-deploy for contract deployment, thegraph for contract caching, waffle for chai
-          matchers, svelte for frontend, vite for HMR (Hot Module Replacement) and production build
+          <a class="text-blue-600" href="https://buidler.dev">buidler</a> for contracts, <a
+            class="text-blue-600"
+            href="https://github.com/wighawag/buidler-deploy">buidler-deploy</a> for contract deployment, <a
+            class="text-blue-600"
+            href="https://thegraph.com">The Graph</a> for contract caching, <a
+            class="text-blue-600"
+            href="https://getwaffle.io/">waffle</a> for chai matchers (only), <a
+            class="text-blue-600"
+            href="https://svelte.dev">svelte</a> for frontend, <a
+            class="text-blue-600"
+            href="https://github.com/vitejs/vite">vite</a> for HMR (Hot Module Replacement) and production build.
         </Feature>
         <Feature title="Code Splitting and Tree Shaking">
-          By using vite, the frontend benefit from code splitting an dyanmic import as well as tree shaking.
+          By using vite and ES modules, the frontend benefit from code splitting an dyanmic import as well as tree
+          shaking.
         </Feature>
         <Feature title="One command deploy">
           Everything is setup, except for the private ENV variable to deploy the contracts, the subgraph and the web

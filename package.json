@@ -34,6 +34,7 @@
     "test": "run-s contracts:test",
     
     "// externals : Setup external services locally (ethereum node, thegraph)": "",
+    "stop": "run-s externals:down",
     "externals:down": "docker-compose down -v",
     "externals": "dotenv -e .env -e contracts/.env -- docker-compose up",
     "shell:externals": "newsh \"npm run externals\"",
@@ -97,7 +98,6 @@
     "setup": "npm-run-all -l externals:down --parallel externals",
     "start": "npm-run-all -l externals:down contracts:clean --parallel common:dev web externals subgraph:setup contracts subgraph seed:build",
     "dev": "npm-run-all -l contracts:clean --parallel common:dev web subgraph:setup contracts subgraph seed:build",
-    "shell:setup": "npm-run-all -l externals:down --parallel shell:externals",
     "shell:start": "npm-run-all -l externals:down --parallel shell:common shell:web shell:externals --sequential common:build subgraph:setup contracts:clean shell:contracts shell:subgraph seed",
     "shell:dev": "npm-run-all -l --parallel shell:common shell:web --sequential common:build subgraph:setup contracts:clean shell:contracts shell:subgraph seed"
   }

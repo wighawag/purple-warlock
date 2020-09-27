@@ -30,4 +30,14 @@ switch (process.platform) {
 `
     );
     break;
+  case 'linux':
+    writeIfNotExists(
+      '.newsh.json',
+      `
+  {
+    "terminalApp": "xterm"
+  }    
+  `
+      );
+    break;
 }
