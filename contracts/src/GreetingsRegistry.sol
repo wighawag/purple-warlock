@@ -4,7 +4,7 @@ pragma solidity 0.7.1;
 import "buidler-deploy/solc_0.7/proxy/Proxied.sol";
 import "@nomiclabs/buidler/console.sol";
 
-contract GobelinRegistry is Proxied {
+contract GreetingsRegistry is Proxied {
     // -----------------------------------------
     // Events
     // -----------------------------------------

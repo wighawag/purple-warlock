@@ -15,7 +15,7 @@ function writeIfNotExists(p, content) {
   }
 }
 
-['purple-warlock.code-workspace', '.env', '.env.production', '.env.staging'].map(
+['jolly-roger.code-workspace', '.env', '.env.production', '.env.staging'].map(
   copyFromDefault
 );
 

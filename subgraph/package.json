@@ -1,6 +1,6 @@
 {
-  "name": "purple-warlock-subgraph",
-  "description": "Subgraph (thegraph.com) for Purple Warlock",
+  "name": "jolly-roger-subgraph",
+  "description": "Subgraph (thegraph.com) for Jolly Roger",
   "private": true,
   "devDependencies": {
     "@graphprotocol/graph-cli": "^0.18.0",

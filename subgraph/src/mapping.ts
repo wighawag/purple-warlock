@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-import {MessageChanged} from '../generated/GobelinRegistry/GobelinRegistryContract';
+import {MessageChanged} from '../generated/GreetingsRegistry/GreetingsRegistryContract';
 import {MessageEntry} from '../generated/schema';
 // import {log} from '@graphprotocol/graph-ts';
 

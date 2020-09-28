@@ -11,8 +11,8 @@ async function main() {
   for (let i = 0; i < messages.length; i++) {
     const sender = others[i];
     if (sender) {
-      const gobelinRegistryContract = await ethers.getContract('GobelinRegistry', sender);
-      await waitFor(gobelinRegistryContract.setMessage(messages[i]));
+      const greetingsRegistryContract = await ethers.getContract('GreetingsRegistry', sender);
+      await waitFor(greetingsRegistryContract.setMessage(messages[i]));
     }
   }
 }

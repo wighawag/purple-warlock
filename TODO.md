@@ -1,7 +1,10 @@
 [ ] remove web3w from vite.config.js
 [ ] improve features description
 [ ] test: dev mode, build mode, staging, smart contract changes, graph changes, frontend changes, css changes, common-lib changes
-[ ] npm audit checks
+[ ] center demo
+[ ] wallet page css
+[ ] center wallet access message
+[ ] show errors ?
 
 [ ] transactions page
 [ ] loading sign next to message (after submitting tx, until it get confirmed)

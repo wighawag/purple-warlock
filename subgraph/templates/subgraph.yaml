@@ -1,15 +1,15 @@
 specVersion: 0.0.2
-description: Purple Warlock
+description: Jolly Roger
 schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum/contract
-    name: GobelinRegistry
+    name: GreetingsRegistry
     network: {{chainName}}
     source:
-      address: '{{contracts.GobelinRegistry.address}}'
-      abi: GobelinRegistryContract
-      startBlock: {{contracts.GobelinRegistry.receipt.blockNumber}}
+      address: '{{contracts.GreetingsRegistry.address}}'
+      abi: GreetingsRegistryContract
+      startBlock: {{contracts.GreetingsRegistry.receipt.blockNumber}}
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.3
@@ -17,8 +17,8 @@ dataSources:
       entities:
         - MessageEntry
       abis:
-        - name: GobelinRegistryContract
-          file: ./abis/GobelinRegistry.json
+        - name: GreetingsRegistryContract
+          file: ./abis/GreetingsRegistry.json
       eventHandlers:
         - event: MessageChanged(indexed address,string)
           handler: handleMessageChanged

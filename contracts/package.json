@@ -1,6 +1,6 @@
 {
-  "name": "purple-warlock-contracts",
-  "description": "Smart contracts for Purple Warlock",
+  "name": "jolly-roger-contracts",
+  "description": "Smart contracts for Jolly Roger",
   "private": true,
   "devDependencies": {
     "@ethereum-waffle/chai": "^3.0.2",

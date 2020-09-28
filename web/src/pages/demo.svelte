@@ -8,7 +8,7 @@
   import {wallet, flow, chain} from '../stores/wallet';
 
   async function setMessage() {
-    await flow.execute((contracts) => contracts.GobelinRegistry.setMessage(message));
+    await flow.execute((contracts) => contracts.GreetingsRegistry.setMessage(message));
   }
 
   const console = logs('app:home');

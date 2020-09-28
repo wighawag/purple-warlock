@@ -13,8 +13,8 @@ const args = process.argv.slice(2);
 const branch = args[0] || 'master';
 
 const variables = {
-  name: 'Purple Warlock',
-  contractName: 'Gobelin Registry',
+  name: 'Jolly Roger',
+  contractName: 'Greetings Registry',
 };
 
 const tests = [
@@ -78,6 +78,9 @@ npx init-from wighawag/decentralised-application <your-app-folder> --name "<Your
 \`\`\`
 <!-- {{%}}  -->`
     );
+  }
+  if (path === 'web/application.json') {
+    return str.replace('Ronan Sandford', 'Nobody').replace('https://ronan.eth.link', '');
   }
   return str;
 }
