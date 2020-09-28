@@ -21,10 +21,7 @@
       <div class="space-y-5 sm:flex sm:justify-center sm:space-y-0 sm:space-x-3">
         <Button class="big secondary" href="Demo" label="Try ethereum integration">Demo</Button>
         <Button class="big secondary" href="Wallet" label="Check wallet status">Wallet</Button>
-        <Button
-          class="big secondary"
-          href="https://github.com/wighawag/decentralised-application"
-          label="get it from github!">
+        <Button class="big secondary" href="https://github.com/wighawag/jolly-roger" label="get it from github!">
           Get It
         </Button>
       </div>
