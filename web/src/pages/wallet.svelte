@@ -1,7 +1,7 @@
 <script lang="ts">
   import Button from '../components/Button.svelte';
   import WalletAccess from '../templates/WalletAccess.svelte';
-  import {wallet, builtin, chain, flow} from '../stores/wallet';
+  import {wallet, builtin, chain, flow, transactions} from '../stores/wallet';
   import type {Contract} from '@ethersproject/contracts';
 
   let contractInterfaces:
@@ -121,6 +121,14 @@
             </Button>
           </form>
         {/each}
+      {/each}
+    {/if}
+  </div>
+  <div>
+    {#if $wallet.address && $chain.chainId}
+      <h2 class="font-extrabold text-xl">Transactions</h2>
+      {#each $transactions as tx}
+        <h3 class="ml-1 font-semibold text-lg">{tx.contractName}.{tx.method}({tx.args})</h3>
       {/each}
     {/if}
   </div>

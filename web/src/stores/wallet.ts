@@ -5,13 +5,18 @@ import contractsInfo from '../contracts.json';
 
 const chainId = import.meta.env.VITE_CHAIN_ID;
 let nodeUrl: string | undefined;
+let finality = 12;
 if (chainId === '1337' || chainId === '31337') {
   nodeUrl = 'http://localhost:8545';
+  finality = 2;
 }
 
 const walletStores = WalletStores({
   chainConfigs: contractsInfo,
   builtin: {autoProbe: true},
+  transactions: {
+    finality,
+  },
   localStoragePrefix: window.basepath && window.basepath.startsWith('/ipfs/') ? window.basepath.slice(6) : undefined, // ensure local storage is not shared across web3w apps on ipfs gateway
   options: [
     'builtin',
