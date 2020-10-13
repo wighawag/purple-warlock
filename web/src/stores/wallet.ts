@@ -15,6 +15,7 @@ const walletStores = WalletStores({
   chainConfigs: contractsInfo,
   builtin: {autoProbe: true},
   transactions: {
+    autoDelete: true, // TODO enable notification
     finality,
   },
   localStoragePrefix: window.basepath && window.basepath.startsWith('/ipfs/') ? window.basepath.slice(6) : undefined, // ensure local storage is not shared across web3w apps on ipfs gateway

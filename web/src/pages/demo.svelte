@@ -4,7 +4,7 @@
   import Blockie from '../components/Blockie.svelte';
   import {test} from 'jolly-roger-common';
   import {logs} from 'named-logs';
-  import messages from '../stores/messages';
+  import {messages} from '../stores/messages';
   import {wallet, flow, chain} from '../stores/wallet';
 
   async function setMessage() {
@@ -63,6 +63,19 @@
       opacity: 0.5;
     }
   }
+
+  .spinner {
+    animation: rotation 2s infinite linear;
+  }
+
+  @keyframes rotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
 </style>
 
 <WalletAccess>
@@ -77,13 +90,18 @@
       {#each $messages.data as message, index}
         <!-- <Blockie address={name.id} /> -->
         <div
-          class={`flex flex-wrap items-center -mx-2 ${message.id === $wallet.address ? 'font-bold' : 'font-normal'}`}>
+          class={`flex flex-wrap items-center -mx-2 ${$wallet.address && message.id.toLowerCase() === $wallet.address.toLowerCase() ? 'font-bold' : 'font-normal'}`}>
           <!-- <div class="px-2 mb-6">
             <h2 class="text-xl">{`${name.id.slice(0, 4)}...${name.id.slice(name.id.length - 4)}`} :</h2>
           </div> -->
           <Blockie address={message.id} class="m-1" />
           <span class="px-2">
-            <p>{message.message}</p>
+            <p>
+              {message.message}
+              {#if message.pending}
+                <img class="spinner inline h-4" alt="pending..." src={`${window.basepath || '/'}images/spinner.svg`} />
+              {/if}
+            </p>
           </span>
         </div>
       {/each}

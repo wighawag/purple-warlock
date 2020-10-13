@@ -11,11 +11,11 @@
         functions: {
           name: string;
           inputs: {name: string; elemId: string}[];
-          call: () => Promise<unknown>;
+          call: () => Promise<any>;
         }[];
       }[]
     | undefined;
-  $: contractInterfaces =
+  $: (contractInterfaces as any) = // TODO investigate
     $chain.contracts &&
     Object.keys($chain.contracts)
       .filter((n: string) => !n.endsWith('_Implementation') && !n.endsWith('_Proxy'))
@@ -107,7 +107,10 @@
             {#each func.inputs as input}
               <span class="">
                 <label for={input.elemId}>{input.name}:</label>
-                <input class="border-pink-600 border-2" id={input.elemId} />
+                <input
+                  class="border-pink-600 border-2 appearance-none bg-transparent w-full text-gray-700 dark:text-gray-300
+                    mr-3 py-1 px-2 leading-tight focus:outline-none"
+                  id={input.elemId} />
               </span>
             {/each}
             <span>)</span>
