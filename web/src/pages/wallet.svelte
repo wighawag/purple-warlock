@@ -59,14 +59,14 @@
       class="w-max-content m-4"
       label="connect via builtin wallet"
       disabled={!$builtin.available || $wallet.connecting}
-      on:click={() => flow.connect('builtin')}>
+      on:click={() => wallet.connect('builtin')}>
       builtin
     </Button>
     <Button
       class="w-max-content m-4"
       label="connect via discord"
       disabled={$wallet.connecting}
-      on:click={() => flow.connect('torus-discord')}>
+      on:click={() => wallet.connect('torus-discord')}>
       discord
     </Button>
     <Button
