@@ -10,7 +10,7 @@ const fs = require('fs-extra');
 const changeCase = require('change-case');
 
 const args = process.argv.slice(2);
-const branch = args[0] || 'master';
+const branch = args[0] || 'dev';
 
 const variables = {
   name: 'Jolly Roger',
