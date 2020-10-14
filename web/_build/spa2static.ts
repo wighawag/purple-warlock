@@ -155,12 +155,38 @@ const basePathScript = `
 const redirectScript = `
     <script>
       let newLocation = location.href;
-      const pathname = location.pathname;
-      if (newLocation.startsWith('http:')) {
-        if (!(location.hostname === 'localhost' || (newLocation.endsWith('.link') && location.host.split('.').length > 3))) {
-          newLocation = 'https' + newLocation.slice(4);
-        }
+      if(newLocation.endsWith('eth.link')) {
+        fetch("https://mainnet.infura.io/v3/bc0bdd4eaac640278cdebc3aa91fabe4", {method: "POST", body: JSON.stringify({jsonrpc: "2.0", id: "3", method: "eth_call", params:[{to:"0x4976fb03c32e5b8cfe2b6ccb31c09ba78ebaba41", data:"0xbc1c58d1c57b1021c48d95fc3bec86ad36a19d0de5692680f571969eaf22ab1f8e6f69cf"}, "latest"]})}).then(v=>v.json()).then((json) => {
+          const result = json.result;
+          const hash = result && result.slice(130, 134).toLowerCase() === 'e301' && result.slice(134, 206);
+          if (hash) {
+            const a = 'abcdefghijklmnopqrstuvwxyz234567';
+            const h = new Uint8Array(hash.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)));
+            const l = 36;
+            let b = 0;
+            let v = 0;
+            let o = '';
+            for (let i = 0; i < l; i++) {
+              v = (v << 8) | h[i];
+              b += 8;
+              while (b >= 5) {
+                o += a[(v >>> (b - 5)) & 31];
+                b -= 5;
+              }
+            }
+            if (b > 0) {
+              o += a[(v << (5 - b)) & 31];
+            }
+            const url = 'https://b' + o + '.ipfs.dweb.link/';
+            location.replace(url);
+          } else {
+            if (newLocation.startsWith('http:')) {
+              newLocation = 'https' + newLocation.slice(4);
+            }
+          }
+        }).catch((e) => console.error(e));
       }
+      const pathname = location.pathname;
       if (pathname.endsWith('index.html')) {
         newLocation = newLocation.slice(0, newLocation.length - 10);
       } else if (!pathname.endsWith('/')) {
