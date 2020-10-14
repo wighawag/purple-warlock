@@ -8,8 +8,8 @@
   const close = () => dispatch('close');
 </script>
 
-<div class="max-w-sm w-full bg-white shadow-lg rounded-lg pointer-events-auto">
-  <div class="rounded-lg shadow-xs overflow-hidden">
+<div class="max-w-sm w-full dark:bg-black bg-white shadow-lg rounded-lg pointer-events-auto">
+  <div class="rounded-lg shadow-xs overflow-hidden dark:border-pink-500 dark:border-2">
     <div class="p-4">
       <div class="flex items-start">
         <div class="flex-shrink-0">
@@ -42,7 +42,7 @@
           {/if}
         </div>
         <div class="ml-3 w-0 flex-1 pt-0.5">
-          <p class="text-sm leading-5 font-medium text-gray-900">{title}</p>
+          <p class="text-sm leading-5 font-medium text-gray-900 dark:text-gray-300">{title}</p>
           <p class="mt-1 text-sm leading-5 text-gray-500">{text}</p>
         </div>
         <div class="ml-4 flex-shrink-0 flex">
