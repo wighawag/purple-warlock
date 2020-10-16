@@ -7,6 +7,7 @@
   "developerURL": "https://ronan.eth.link",
   "url": "https://jolly-roger.eth.link",
   "ensName": "jolly-roger.eth",
+  "ethLinkErrorRedirect": "ipns",
   "background": "#1f253a",
   "theme_color": "#1f253a",
   "appleStatusBarStyle": "black-translucent",
