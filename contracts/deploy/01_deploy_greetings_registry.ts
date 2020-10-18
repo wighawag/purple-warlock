@@ -5,10 +5,11 @@ const func: DeployFunction = async function (bre: BuidlerRuntimeEnvironment) {
   const {deploy} = bre.deployments;
   const useProxy = !bre.network.live;
 
-  // proxy only in non-live network (localhost and buidlerevm) enabling HCR (Hot Contract Replaement)
+  // proxy only in non-live network (localhost and buidlerevm) enabling HCR (Hot Contract Replacement)
   // in live network, proxy is disabled and constructor is invoked
   await deploy('GreetingsRegistry', {from: deployer, proxy: useProxy && 'postUpgrade', args: [2], log: true});
 
   return !useProxy; // when live network, record the script as executed to prevent rexecution
 };
 export default func;
+func.id = 'deploy_greetings_registry'; // id required to prevent reexecution
