@@ -1,5 +1,5 @@
 import {expect} from './chai-setup';
-import {ethers, deployments, getUnnamedAccounts} from '@nomiclabs/buidler';
+import {ethers, deployments, getUnnamedAccounts} from 'hardhat';
 
 describe('GreetingsRegistry', function () {
   it('should work', async function () {
