@@ -52,7 +52,7 @@ services:
       - /app/ganache-core.docker.cli.js
       - --deterministic
       - --mnemonic
-      - '${MNEMONIC-minimum symptom minute gloom tragic situate silver mechanic salad amused elite beef}'
+      - '${MNEMONIC-test test test test test test test test test test test junk}'
       - --hostname
       - '0.0.0.0'
       - --blockTime
