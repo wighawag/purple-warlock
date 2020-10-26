@@ -3,11 +3,9 @@ import {HardhatUserConfig} from 'hardhat/config';
 import 'hardhat-deploy';
 import 'hardhat-deploy-ethers';
 
-let mnemonic = process.env.MNEMONIC;
+const mnemonic = process.env.MNEMONIC;
 if (!mnemonic) {
-  // FOR DEV ONLY, USE .env FOR EXTERNAL NETWORKS
-  // (IT IS IMPORTANT TO HAVE A NON RANDOM MNEMONIC SO THAT SCRIPTS CAN ACT ON THE SAME ACCOUNTS)
-  mnemonic = 'present annual fetch tiger fabric regret ostrich drum clay sell deny couple';
+  throw new Error('Mnemonic is required');
 }
 const accounts = {
   mnemonic,
