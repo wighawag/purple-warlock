@@ -38,19 +38,18 @@ switch (process.platform) {
     "terminalApp": "xterm"
   }    
   `
-      );
+    );
     break;
 }
 
-
-const execSync = require('child_process').execSync
-function npmInstall (dir) {
-  console.log(`INSTALLING ${dir}...`)
+const execSync = require('child_process').execSync;
+function npmInstall(dir) {
+  console.log(`INSTALLING ${dir}...`);
   let exitCode = 0;
   try {
-    execSync('npm install', { cwd: dir, stdio: 'inherit'})
+    execSync('npm install', {cwd: dir, stdio: 'inherit'});
   } catch (err) {
-    exitCode = err.status
+    exitCode = err.status;
   }
   if (exitCode) {
     process.exit(exitCode);
