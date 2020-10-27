@@ -42,7 +42,11 @@ function findAndReplace(str, term, replacement) {
 }
 
 function findAndReplaceVariable(str, test, variableName) {
-  return findAndReplace(str, changeCase[test](variables[variableName]), `{{=_.${test}(it.${variableName})}}`);
+  return findAndReplace(
+    str,
+    changeCase[test](variables[variableName]),
+    `{{=_.${test}(it.${variableName})}}`
+  );
 }
 
 function findAndReplaceAll(str) {
@@ -86,7 +90,10 @@ npx init-from wighawag/jolly-roger <your-app-folder> --name "<Your App Name>" --
       .replace(/^.*"ethLinkErrorRedirect": .*,\n/gm, ''); // remove ethLinkErrorRedirect
   }
   if (path.endsWith('.svelte') || path.endsWith('.html')) {
-    return str.replace(/<!--TEMPLATE_REMOVE-->[^]*?<!--TEMPLATE_REMOVE-->/g, '');
+    return str.replace(
+      /<!--TEMPLATE_REMOVE-->[^]*?<!--TEMPLATE_REMOVE-->/g,
+      ''
+    );
   }
   return str;
 }
@@ -102,7 +109,14 @@ fs.removeSync(archivePath);
 fs.emptyDirSync(dest);
 execSync(`git archive ${branch} -o ${archivePath}`);
 
-const exclude = ['.gitmodules', 'export', 'archive.tar.gz', 'toTemplate/', 'contracts/deployments/staging', 'TODO.md'];
+const exclude = [
+  '.gitmodules',
+  'export',
+  'archive.tar.gz',
+  'toTemplate/',
+  'contracts/deployments/staging',
+  'TODO.md',
+];
 
 const contents = {};
 console.log('extracting...', {archivePath, dest});

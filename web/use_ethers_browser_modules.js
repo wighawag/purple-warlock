@@ -36,7 +36,9 @@ function recurse(folderPath) {
     const moduleFolders = fs.readdirSync(folderPath);
     for (const moduleFolder of moduleFolders) {
       if (moduleFolder.startsWith('@')) {
-        const moduleSubFolders = fs.readdirSync(path.join(folderPath, moduleFolder));
+        const moduleSubFolders = fs.readdirSync(
+          path.join(folderPath, moduleFolder)
+        );
         for (const moduleSubFolder of moduleSubFolders) {
           fix(folderPath, path.join(moduleFolder, moduleSubFolder));
         }

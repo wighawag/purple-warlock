@@ -11,7 +11,11 @@ export type QueryState<T> = {
 
 export function queryStore<T>(
   queryString: string,
-  options: {variables?: Record<string, unknown>; once?: boolean; path?: string} = {}
+  options: {
+    variables?: Record<string, unknown>;
+    once?: boolean;
+    path?: string;
+  } = {}
 ): {
   subscribe: typeof subscribe;
   fetch: typeof fetch;
@@ -46,7 +50,12 @@ export function queryStore<T>(
         if (data[options.path]) {
           data = data[options.path];
         } else {
-          _set({error: {code: 11, message: `${options.path} does not exist in result.data: ${data}`}});
+          _set({
+            error: {
+              code: 11,
+              message: `${options.path} does not exist in result.data: ${data}`,
+            },
+          });
         }
       }
       _set({state: 'Ready', polling: !options.once});

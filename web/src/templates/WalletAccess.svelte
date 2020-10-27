@@ -4,7 +4,14 @@
   import Toast from '../components/Toast.svelte';
   import Modal from '../components/Modal.svelte';
 
-  import {wallet, builtin, chain, transactions, balance, flow} from '../stores/wallet';
+  import {
+    wallet,
+    builtin,
+    chain,
+    transactions,
+    balance,
+    flow,
+  } from '../stores/wallet';
 
   const chainNames = {
     '1': 'mainnet',
@@ -29,7 +36,9 @@
   $: executionError = $flow.executionError as any;
 
   let options: {img: string; id: string; name: string}[] = [];
-  $: builtinNeedInstalation = $wallet.options.filter((v) => v === 'builtin' && !$builtin.available).length > 0;
+  $: builtinNeedInstalation =
+    $wallet.options.filter((v) => v === 'builtin' && !$builtin.available)
+      .length > 0;
   $: options = $wallet.options
     .filter((v) => v !== 'builtin' || $builtin.available)
     .map((v) => {
@@ -61,7 +70,11 @@
 <slot />
 
 {#if $flow.inProgress}
-  <Modal {title} cancelable={!$wallet.connecting} on:close={() => flow.cancel()} closeButton={false}>
+  <Modal
+    {title}
+    cancelable={!$wallet.connecting}
+    on:close={() => flow.cancel()}
+    closeButton={false}>
     {#if $wallet.state === 'Idle'}
       {#if $wallet.loadingModule}
         Loading module:
@@ -102,18 +115,24 @@
       {#if $wallet.unlocking}
         Please accept the application to access your wallet.
       {:else}
-        <Button label="Unlock Wallet" on:click={() => wallet.unlock()}>Unlock</Button>
+        <Button label="Unlock Wallet" on:click={() => wallet.unlock()}>
+          Unlock
+        </Button>
       {/if}
     {:else if $chain.state === 'Idle'}
       {#if $chain.connecting}Connecting...{/if}
     {:else if $chain.state === 'Connected'}
-      {#if $chain.loadingData}Loading contracts...{:else if $chain.notSupported}Please switch to {chainName}{/if}
+      {#if $chain.loadingData}
+        Loading contracts...
+      {:else if $chain.notSupported}Please switch to {chainName}{/if}
     {:else if $wallet.pendingUserConfirmation}
       Please accept transaction...
     {:else if executionError}
       {#if executionError.code === 4001}
         You rejected the request
-      {:else if executionError.message}{executionError.message}{:else}Error: {executionError}{/if}
+      {:else if executionError.message}
+        {executionError.message}
+      {:else}Error: {executionError}{/if}
       <Button label="Retry" on:click={() => flow.retry()}>Retry</Button>
     {/if}
   </Modal>
