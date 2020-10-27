@@ -272,7 +272,6 @@ async function generateApp(publicFolder: string) {
 
 (async () => {
   await generateApp('public');
-  console.log("DONE");
+  console.log('DONE');
   process.exit(0);
-})()
-
+})();

@@ -64,7 +64,8 @@
   <Modal {title} cancelable={!$wallet.connecting} on:close={() => flow.cancel()} closeButton={false}>
     {#if $wallet.state === 'Idle'}
       {#if $wallet.loadingModule}
-        Loading module: {$wallet.selected}
+        Loading module:
+        {$wallet.selected}
       {:else if $wallet.connecting}
         Connecting to wallet...
       {:else}
@@ -91,7 +92,8 @@
               <img
                 class="cursor-pointer p-0 mx-2 h-10 w-10 object-contain"
                 alt={`Download Metamask}`}
-                src={`${base}images/metamask.svg`} /> Download metamask
+                src={`${base}images/metamask.svg`} />
+              Download metamask
             </Button>
           </div>
         {/if}

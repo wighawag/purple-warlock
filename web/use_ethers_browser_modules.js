@@ -48,4 +48,4 @@ function recurse(folderPath) {
 }
 
 recurse('node_modules');
-recurse('node_modules/.pnpm');
+recurse('../node_modules/.pnpm');

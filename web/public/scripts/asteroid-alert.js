@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 const $confirm = (text, buttonColor) => {
   return new Promise((resolve) => {
     var as_background = document.createElement('div');
