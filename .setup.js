@@ -15,7 +15,14 @@ function writeIfNotExists(p, content) {
   }
 }
 
-['jolly-roger.code-workspace', '.env', '.env.production', '.env.staging'].map(copyFromDefault);
+[
+  'jolly-roger.code-workspace',
+  '.env',
+  '.env.production',
+  '.env.staging',
+  'contracts/.vscode/settings',
+  'web/.vscode/settings',
+].map(copyFromDefault);
 
 switch (process.platform) {
   case 'win32':
@@ -24,7 +31,7 @@ switch (process.platform) {
       `
 {
   "terminalApp": "cmd"
-}    
+}
 `
     );
     break;
@@ -34,7 +41,7 @@ switch (process.platform) {
       `
   {
     "terminalApp": "xterm"
-  }    
+  }
   `
     );
     break;
