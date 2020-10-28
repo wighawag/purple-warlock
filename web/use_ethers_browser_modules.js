@@ -48,6 +48,6 @@ function recurse(folderPath) {
     }
   }
 }
-
+console.log({cwd: process.cwd()});
 recurse('node_modules');
 recurse('../node_modules/.pnpm');
