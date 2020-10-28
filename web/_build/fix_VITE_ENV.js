@@ -15,10 +15,13 @@ for (const file of files) {
   );
   let content = fs.readFileSync(filepath).toString();
   for (const envName of envNames) {
-    content = content.replace(
+    const newContent = content.replace(
       new RegExp(`{}.${envName}`, 'g'),
       `"${process.env[envName]}"`
     );
+    if (newContent != content) {
+      console.log(`replaced {}.${envName} with "${${process.env[envName]}"`)
+    }
   }
   fs.writeFileSync(filepath, content);
 }

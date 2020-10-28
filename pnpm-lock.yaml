@@ -67,7 +67,7 @@ importers:
       dotenv: 8.2.0
       ethers: 5.0.19
       hardhat: 2.0.2
-      hardhat-deploy: 0.7.0-beta.18_hardhat@2.0.2
+      hardhat-deploy: 0.7.0-beta.20_hardhat@2.0.2
       hardhat-deploy-ethers: 0.3.0-beta.5_ethers@5.0.19+hardhat@2.0.2
       jolly-roger-common: 'link:../common-lib'
       mocha: 8.2.0
@@ -88,7 +88,7 @@ importers:
       dotenv: ^8.2.0
       ethers: ^5.0.8
       hardhat: ^2.0.1
-      hardhat-deploy: ^0.7.0-beta.18
+      hardhat-deploy: ^0.7.0-beta.20
       hardhat-deploy-ethers: ^0.3.0-beta.5
       jolly-roger-common: 'workspace:*'
       mocha: ^8.1.1
@@ -5957,7 +5957,7 @@ packages:
       hardhat: ^2.0.0-rc.1
     resolution:
       integrity: sha512-KoUswkCPSuARGjZQIf8kItL5rPFt6srgVj+q0B9YTQ7Vyw/k2N0R8u7aYWq4Piy9mjDKcEGQTPBXhaX02BMkVw==
-  /hardhat-deploy/0.7.0-beta.18_hardhat@2.0.2:
+  /hardhat-deploy/0.7.0-beta.20_hardhat@2.0.2:
     dependencies:
       '@ethersproject/abi': 5.0.7
       '@ethersproject/abstract-signer': 5.0.7
@@ -5983,7 +5983,7 @@ packages:
     peerDependencies:
       hardhat: ^2.0.0
     resolution:
-      integrity: sha512-SY05L/2+FacNbmtkLGmsH+zDJJc3P0FH5+5VKscx9+Hq6TSQbLeSihVLby26qkChfRQwoWl/WC3+Plfo0BgTMA==
+      integrity: sha512-Q3SEZnqkBIGICwf2YYQf+HG/TBa9hjGIncNtmW5SB0Hn3a15wlZQ9AywfRt/4zTAarxnzEAhq58H7bPJyWiJAA==
   /hardhat/2.0.2:
     dependencies:
       '@nomiclabs/ethereumjs-vm': 4.2.0
