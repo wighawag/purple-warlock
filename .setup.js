@@ -20,8 +20,8 @@ function writeIfNotExists(p, content) {
   '.env',
   '.env.production',
   '.env.staging',
-  'contracts/.vscode/settings',
-  'web/.vscode/settings',
+  'contracts/.vscode/settings.json',
+  'web/.vscode/settings.json',
 ].map(copyFromDefault);
 
 switch (process.platform) {
