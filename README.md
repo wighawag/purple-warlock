@@ -4,16 +4,15 @@
 
 ## requirements :
 
-### docker and docker-compose
-
-`docker` and `docker-compose` are used to setup the external services (an ethereum node, an ipfs node and a [subgraph](https://thegraph.com) node)
-
-If you prefer (or do not have access to docker/docker-compose) you can run them independently. 
-
 ### node
 
 This app requires [node.js](https://nodejs.org/) (tested on v12+)
 
+### docker and docker-compose
+
+`docker` and `docker-compose` are used to setup the external services (an ethereum node, an ipfs node and a [subgraph](https://thegraph.com) node)
+
+If you prefer (or do not have access to docker/docker-compose) you can run them independently.
 
 ## intall dependencies :
 
@@ -38,7 +37,6 @@ On linux it uses `xterm` by default (so you need that installed).
 On windows it use `cmd.exe` by default.
 
 If you need some other terminal to execute the separate processes, you can configure it in `.newsh.json`.
-
 
 This command will bring 5 shells up
 
@@ -96,8 +94,8 @@ You can remove the env if you want to use the same as the one in `.env`
 
 You'll also need to update the following for staging and production :
 
-- `CHAIN_ID=<id of the chain where contracts lives>`
 - `SUBGRAPH_NAME=<thegraph account name>/<subgraph name>`
+- `VITE_CHAIN_ID=<id of the chain where contracts lives>`
 - `VITE_THE_GRAPH_HTTP=https://api.thegraph.com/subgraphs/name/<thegraph account name>/<subgraph name>`
 
 you then need to ensure you have a subgraph already created on thegraph.com with that name: https://thegraph.com/explorer/dashboard
