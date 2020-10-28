@@ -57,6 +57,10 @@ function recurse(folderPath) {
     }
   }
 }
-console.log({cwd: process.cwd()});
+console.log({
+  cwd: process.cwd(),
+  VITE_THE_GRAPH_HTTP: process.env.VITE_THE_GRAPH_HTTP,
+  VITE_CHAIN_ID: process.env.VITE_CHAIN_ID,
+});
 recurse('node_modules');
 recurse('../node_modules/.pnpm');
