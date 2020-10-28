@@ -25,6 +25,7 @@
     "wighawag_newsh": "0.0.6"
   },
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "prepare": "node ./.setup.js",
     "lint": "eslint \"**/*.{js,ts}\" && solhint contracts/src/**/*.sol",
     "lint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix contracts/src/**/*.sol",
