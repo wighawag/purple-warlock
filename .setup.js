@@ -60,4 +60,4 @@ function npmInstall(dir) {
     process.exit(exitCode);
   }
 }
-npmInstall('npm');
+npmInstall('_npm');
