@@ -13,10 +13,14 @@ for (const file of files) {
   const envNames = ['VITE_THE_GRAPH_HTTP', 'VITE_CHAIN_ID'];
   let content = fs.readFileSync(filepath).toString();
   for (const envName of envNames) {
-    content = content.replace(
-      new RegExp(`{}.${envName}`, 'g'),
-      process.env[envName]
-    );
+    if (process.env[envName]) {
+      content = content.replace(
+        new RegExp(`{}.${envName}`, 'g'),
+        `"${process.env[envName]}"`
+      );
+    } else {
+      console.log(`no env for ${envName}`);
+    }
   }
   fs.writeFileSync(filepath, content);
 }
