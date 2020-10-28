@@ -50,6 +50,7 @@
   },
   "scripts": {
     "ethers-module": "node use_ethers_browser_modules.js",
+    "fix_VITE_ENV": "node _build/fix_VITE_ENV.js",
     "prepare": "node use_ethers_browser_modules.js && npm run generate",
     "validate": "svelte-check && tsc --noEmit",
     "dev": "svite -ts",
