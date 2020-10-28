@@ -28,7 +28,7 @@
     "prepare": "node ./.setup.js",
     "lint": "eslint \"**/*.{js,ts}\" && solhint contracts/src/**/*.sol",
     "lint:fix": "eslint --fix \"**/*.{js,ts}\" && solhint --fix contracts/src/**/*.sol",
-    "format": "prettier --write \"**/*.{ts,js,svelte,sol}\"",
+    "format": "npm run --prefix _npm prettier -- --write \"../**/*.{ts,js,svelte,sol}\"",
     "test": "run-s contracts:test",
     "// externals : Setup external services locally (ethereum node, thegraph)": "",
     "stop": "run-s externals:down",
