@@ -10,17 +10,15 @@ for (const file of files) {
   if (stat.isDirectory()) {
     continue;
   }
-  const envNames = ['VITE_THE_GRAPH_HTTP', 'VITE_CHAIN_ID'];
+  const envNames = Object.keys(process.env).filter((v) =>
+    v.startsWith('VITE_')
+  );
   let content = fs.readFileSync(filepath).toString();
   for (const envName of envNames) {
-    if (process.env[envName]) {
-      content = content.replace(
-        new RegExp(`{}.${envName}`, 'g'),
-        `"${process.env[envName]}"`
-      );
-    } else {
-      console.log(`no env for ${envName}`);
-    }
+    content = content.replace(
+      new RegExp(`{}.${envName}`, 'g'),
+      `"${process.env[envName]}"`
+    );
   }
   fs.writeFileSync(filepath, content);
 }
