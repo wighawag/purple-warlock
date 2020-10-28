@@ -18,7 +18,7 @@ query {
     timestamp
   }
 }`,
-  {path: 'messageEntries'} // allow to access messages directly
+  {transform: 'messageEntries'} // allow to access messages directly
 );
 
 export const messages: Readable<QueryState<Messages>> & {

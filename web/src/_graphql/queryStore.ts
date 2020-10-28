@@ -14,7 +14,7 @@ export function queryStore<T>(
   options: {
     variables?: Record<string, unknown>;
     once?: boolean;
-    path?: string;
+    transform?: string | ((v: unknown) => T);
   } = {}
 ): {
   subscribe: typeof subscribe;
@@ -46,17 +46,19 @@ export function queryStore<T>(
       _set({error: result.error});
     } else if (result.data) {
       let data = result.data;
-      if (options.path) {
-        if (data[options.path]) {
-          data = data[options.path];
+      if (typeof options?.transform === 'string') {
+        if (data[options.transform]) {
+          data = data[options.transform];
         } else {
           _set({
             error: {
               code: 11,
-              message: `${options.path} does not exist in result.data: ${data}`,
+              message: `${options.transform} does not exist in result.data: ${data}`,
             },
           });
         }
+      } else if (options.transform) {
+        data = options.transform(data);
       }
       _set({state: 'Ready', polling: !options.once});
       _set({data});
