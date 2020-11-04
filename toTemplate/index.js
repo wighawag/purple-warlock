@@ -66,17 +66,17 @@ function transform(path, str) {
       '<!--   -->',
       `<!-- {{% it.template }} -->
 # jolly-roger
-    
+
 A template to build a decentralised applicaiton using ethereum, hardhat, svelte and thegraph
-    
+
 to make an app out of it, execute the following
-    
+
 \`\`\`
 npx init-from wighawag/jolly-roger <your-app-folder>
 \`\`\`
-    
+
 or if you want the name to be different than the folder or the contract name to be different too
-    
+
 \`\`\`
 npx init-from wighawag/jolly-roger <your-app-folder> --name "<Your App Name>" --contractName "<your Contract Name>"
 \`\`\`

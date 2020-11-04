@@ -15,9 +15,16 @@ function writeIfNotExists(p, content) {
   }
 }
 
-['jolly-roger.code-workspace', '.env', '.env.production', '.env.staging'].map(
-  copyFromDefault
-);
+[
+  'jolly-roger.code-workspace',
+  '.env',
+  '.env.production',
+  '.env.staging',
+  'contracts/.vscode/settings.json',
+  'common-lib/.vscode/settings.json',
+  'subgraph/.vscode/settings.json',
+  'web/.vscode/settings.json',
+].map(copyFromDefault);
 
 switch (process.platform) {
   case 'win32':
@@ -26,7 +33,7 @@ switch (process.platform) {
       `
 {
   "terminalApp": "cmd"
-}    
+}
 `
     );
     break;
@@ -36,7 +43,7 @@ switch (process.platform) {
       `
   {
     "terminalApp": "xterm"
-  }    
+  }
   `
     );
     break;
@@ -55,7 +62,4 @@ function npmInstall(dir) {
     process.exit(exitCode);
   }
 }
-npmInstall('common-lib');
-npmInstall('contracts');
-npmInstall('subgraph');
-npmInstall('web');
+npmInstall('_npm');
