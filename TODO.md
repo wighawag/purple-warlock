@@ -10,7 +10,7 @@
 [ ] loading sign next to message (after submitting tx, until it get confirmed)
 [ ] Better Toast / Flash message
 [ ] update to latest thegraph ?
-[ ] document more (ganache block time, live reload, fix_ethers_module.js, etc...)
+[ ] document more (ganache block time, live reload, etc...)
 [ ] Add offline detection and message
 [ ] add settings menu to change thegraph url (use query or local storage ?)
 [ ] add gas report ? via new plugin ?
