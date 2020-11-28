@@ -135,7 +135,7 @@ importers:
       named-logs-console: 0.0.14
       svelte: 3.24.1
       svelte-hmr: 0.10.2_svelte@3.24.1
-      web3w: 0.2.36_05dfc60a248ce24be7a6317263d6c452
+      web3w: 0.2.38_05dfc60a248ce24be7a6317263d6c452
       web3w-torus-loader: 0.2.4
       web3w-walletconnect-loader: 0.2.0
       wonka: 4.0.14
@@ -201,7 +201,7 @@ importers:
       tslib: ^2.0.0
       typescript: ^3.9.7
       vite: ^1.0.0-rc.8
-      web3w: ^0.2.36
+      web3w: ^0.2.38
       web3w-torus-loader: ^0.2.4
       web3w-walletconnect-loader: ^0.2.0
       wonka: ^4.0.14
@@ -10609,6 +10609,7 @@ packages:
     resolution:
       integrity: sha1-5cyaTIJ45GZP/twBx9qEhCsEAXU=
   /promisify-es6/1.0.3:
+    bundledDependencies: []
     deprecated: Unmaintained
     dev: true
     resolution:
@@ -13145,7 +13146,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-tF2mdo910sA14WuvumoekFCyfO5gsvbkzuvaRtW7QUCT3E4YAzGVr6PWTrUdA+Y6pCIfYkKUMLZcYTPFSyacCg==
-  /web3w/0.2.36_05dfc60a248ce24be7a6317263d6c452:
+  /web3w/0.2.38_05dfc60a248ce24be7a6317263d6c452:
     dependencies:
       '@ethersproject/abi': 5.0.8
       '@ethersproject/bignumber': 5.0.10
@@ -13159,7 +13160,7 @@ packages:
       '@ethersproject/contracts': ^5.0.0
       '@ethersproject/providers': ^5.0.0
     resolution:
-      integrity: sha512-2+E/unPSVbdNZD7nn1soIeYmWtH0PtuoSieMltsydR2noe7p3CsLlR67DobO3jpdyBtEwW/z+JJeCQuKTp6kug==
+      integrity: sha512-b1eTJ6xha0tuzYFMrg3IEYR2xfnNLZmfo5QF5J95yKb2EGRmpDtJfc6GqNbGb7JW+rO2yzYOuXmdD12RRzX80w==
   /which-module/2.0.0:
     dev: true
     resolution:
@@ -13559,6 +13560,7 @@ packages:
     dev: true
     name: neat-frame
     resolution:
+      registry: 'https://registry.npmjs.org/'
       tarball: 'https://codeload.github.com/agentofuser/neat-frame/tar.gz/b244ca11078bd35f63b2d7cb22d5e4b5c12ae2aa'
     version: 1.0.2
   github.com/hugomrdias/concat-stream/057bc7b5d6d8df26c8cf00a3f151b6721a0a8034:
