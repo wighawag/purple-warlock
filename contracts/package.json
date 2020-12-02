@@ -17,7 +17,7 @@
     "cross-env": "^7.0.2",
     "dotenv": "^8.2.0",
     "ethers": "^5.0.8",
-    "hardhat": "^2.0.1",
+    "hardhat": "^2.0.4",
     "hardhat-deploy": "^0.7.0-beta.35",
     "hardhat-deploy-ethers": "^0.3.0-beta.7",
     "jolly-roger-common": "workspace:*",
