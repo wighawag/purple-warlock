@@ -67,8 +67,8 @@ importers:
       dotenv: 8.2.0
       ethers: 5.0.19
       hardhat: 2.0.2
-      hardhat-deploy: 0.7.0-beta.32_hardhat@2.0.2
-      hardhat-deploy-ethers: 0.3.0-beta.6_ethers@5.0.19+hardhat@2.0.2
+      hardhat-deploy: 0.7.0-beta.35_hardhat@2.0.2
+      hardhat-deploy-ethers: 0.3.0-beta.7_ethers@5.0.19+hardhat@2.0.2
       jolly-roger-common: 'link:../common-lib'
       mocha: 8.2.0
       ts-node: 9.0.0_typescript@3.9.7
@@ -88,8 +88,8 @@ importers:
       dotenv: ^8.2.0
       ethers: ^5.0.8
       hardhat: ^2.0.1
-      hardhat-deploy: ^0.7.0-beta.32
-      hardhat-deploy-ethers: ^0.3.0-beta.6
+      hardhat-deploy: ^0.7.0-beta.35
+      hardhat-deploy-ethers: ^0.3.0-beta.7
       jolly-roger-common: 'workspace:*'
       mocha: ^8.1.1
       ts-node: ^9.0.0
@@ -6426,17 +6426,17 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-VIZB+ibDhx7ObhAe7OVtoEbuP4h/MuOTHJ+J8h/eBXotJYl0fBgR72xDFCKgIh22OJZIOVNxBMWuhAr10r8HdA==
-  /hardhat-deploy-ethers/0.3.0-beta.6_ethers@5.0.19+hardhat@2.0.2:
+  /hardhat-deploy-ethers/0.3.0-beta.7_ethers@5.0.19+hardhat@2.0.2:
     dependencies:
       ethers: 5.0.19
       hardhat: 2.0.2
     dev: true
     peerDependencies:
       ethers: ^5.0.0
-      hardhat: ^2.0.0-rc.1
+      hardhat: ^2.0.0
     resolution:
-      integrity: sha512-dwatT8Cw2FWSgvnUJom8lnPuJ2ULz8Ir844GHFDterfDMWvCcJCqnATX+nMznYoSJa7NEzoSPAm+RiWvvkh/2A==
-  /hardhat-deploy/0.7.0-beta.32_hardhat@2.0.2:
+      integrity: sha512-JKMNte6vudu9LSNqgmBtNxc1gfxp3NUcPKVAf/FANHfl9pa/mBGg6hpQO7tD8CLkAbe6f4K5BjyYIPWX3p7MKw==
+  /hardhat-deploy/0.7.0-beta.35_hardhat@2.0.2:
     dependencies:
       '@ethersproject/abi': 5.0.9
       '@ethersproject/abstract-signer': 5.0.9
@@ -6453,6 +6453,7 @@ packages:
       chalk: 4.1.0
       chokidar: 3.4.3
       debug: 4.3.1
+      form-data: 3.0.0
       fs-extra: 9.0.1
       hardhat: 2.0.2
       match-all: 1.2.6
@@ -6462,7 +6463,7 @@ packages:
     peerDependencies:
       hardhat: ^2.0.0
     resolution:
-      integrity: sha512-po+vW+gtmqls/Od1kc9btDeza6sR+DHbVi1KaiS5tgYLyCbDnf4Ih+2UjGQMDsaJbYxK/19jOOf5rfRsOaTAzA==
+      integrity: sha512-5l0k1xZzrdRZgFGHEGfgypM4PlhqyYBF+ToADz8oTRH+7fwWyK9424MA6qI8z373Ogm7Y0kUQTRqNHicYrepAw==
   /hardhat/2.0.2:
     dependencies:
       '@nomiclabs/ethereumjs-vm': 4.2.0
